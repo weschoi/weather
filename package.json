@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "react-dev": "webpack -d --watch",
-    "server-dev": "nodemon server/index.js"
+    "build": "webpack -d --watch",
+    "start": "nodemon server/index.js",
+    "sass": "sass --watch dist/css"
   },
   "author": "Beth Johnson",
   "license": "ISC",
