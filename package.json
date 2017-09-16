@@ -19,6 +19,7 @@
     "webpack": "^3.6.0"
   },
   "dependencies": {
+    "bootstrap": "^4.0.0-beta",
     "express": "^4.15.4",
     "jquery": "^3.2.1",
     "react": "^15.6.1",

@@ -1,13 +1,17 @@
 * {
-  background-color: red; }
+  box-sizing: border-box;
+  border: 1px solid red;
+  margin: 0px; }
 
-h4 {
-  color: blue; }
+html,
+body {
+  margin: 0;
+  padding: 0; }
 
-p {
-  color: red; }
+.main {
+  height: 200px; }
 
-h6 {
-  color: yellow; }
+.row {
+  margin: 0px; }
 
 /*# sourceMappingURL=index.css.map */
