@@ -11,7 +11,7 @@ class App extends React.Component {
 
   render () {
     return (
-      <div className="row">
+      <div className="row no-gutters">
         <Sexy />
         <Nerdy />
       </div>

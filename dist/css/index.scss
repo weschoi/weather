@@ -1,39 +1,98 @@
-// $font-stack:    Helvetica, sans-serif;
-// $primary-color: #333;
+@import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900');
+@import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
 
-// body {
-//   font: 100% $font-stack;
-//   color: $primary-color;
-// }
+
+/* -------------------------------------------------------------------------- */
+/* Sexy Variables
+/* -------------------------------------------------------------------------- */
+
+$left-bg: #e3e3e5;
+$left-button: #242b3f;
+$sand: #c7aa84;
+$dark-blue: #17122c;
+
+$gradient-1: #b156f2;
+$gradient-2: #795ae1;
+
+
+/* -------------------------------------------------------------------------- */
+/* Nerdy Variables
+/* -------------------------------------------------------------------------- */
+
+$right-bg: #a89e87;
+$right-calc-bg: #2c2725;
+$right-button-1: #bab59f;
+$right-button-2: #46372d;
+$salmon: #fd6433;
+
+
+
+
 
 * {
-  box-sizing: border-box;
-  border: 1px solid red;
-  margin: 0px;
+    border: 1px solid red;
 }
 
 html,
 body {
-  margin: 0;
+  height: 100%;
+}
+
+.container-fluid {
+  height: 100%;
   padding: 0;
 }
 
-.main {
-  height: 200px;
-}
+#app {}
 
 .row {
-  margin: 0px
+  margin: 0px;
+  height: 100%;
 }
 
-// h4 {
-//   color: yellow;
-// }
+/* -------------------------------------------------------------------------- */
+/* Sexy
+/* -------------------------------------------------------------------------- */
 
-// p {
-//   color: red;
-// }
+.sexy {
+    background-color: $left-bg;
+    font-family: 'Oswald', sans-serif;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-// h6 {
-//   color: yellow;
-// }
+}
+
+.sexy-container {
+    height: 450px;
+    width: 300px;
+}
+
+
+
+
+/* -------------------------------------------------------------------------- */
+/* Nerdy
+/* -------------------------------------------------------------------------- */
+
+.nerdy {
+    background-color: $right-bg;
+    font-family: 'Orbitron', sans-serif;
+    padding: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nerdy-container {
+    height: 450px;
+    width: 300px;
+}
+
+
+
+
+
+
+

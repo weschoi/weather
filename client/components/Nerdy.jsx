@@ -3,7 +3,10 @@ import React from 'react';
 class Nerdy extends React.Component {
   render() {
     return (
-      <h1>Nerdy</h1>
+      <div className="col-md-6 nerdy">
+        <div className="nerdy-container">
+        </div>
+      </div>
     )
   }
 }
