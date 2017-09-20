@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900');
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,500,600,700');
 
-
 /* -------------------------------------------------------------------------- */
 /* Sexy Variables
 /* -------------------------------------------------------------------------- */
@@ -27,8 +26,6 @@ $salmon: #fd6433;
 
 
 
-
-
 * {
     border: 1px solid red;
 }
@@ -50,6 +47,7 @@ body {
   height: 100%;
 }
 
+
 /* -------------------------------------------------------------------------- */
 /* Sexy
 /* -------------------------------------------------------------------------- */
@@ -69,6 +67,11 @@ body {
     width: 300px;
 }
 
+@media only screen and (min-width: 0px) and (max-width: 767px) {
+  .container-fluid {
+    height: 1200px;
+  }
+}
 
 
 
