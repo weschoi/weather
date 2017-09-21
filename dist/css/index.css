@@ -105,6 +105,12 @@ body {
   flex-direction: column;
   justify-content: center; }
 
+.braun {
+  width: 87%;
+  height: 22px;
+  background: url("https://i.imgur.com/XbgdMhK.png") no-repeat;
+  background-size: contain; }
+
 .view-2 {
   height: 14%;
   width: 87%;

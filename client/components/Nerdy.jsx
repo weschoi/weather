@@ -6,6 +6,9 @@ class Nerdy extends React.Component {
       <div className="col-md-6 nerdy">
         <div className="nerdy-container">
 
+          <div className="braun">
+          </div>
+
           <div className="view-2">
             <div className="view-inner">
             </div>
