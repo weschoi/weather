@@ -27,7 +27,7 @@ $salmon: #fd6433;
 
 
 * {
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 html,
@@ -68,8 +68,8 @@ body {
 }
 
 .sexy-container {
-    height: 450px;
-    width: 280px;
+    height: 400px;
+    width: 240px;
 }
 
 .view {
@@ -111,7 +111,7 @@ body {
   text-align: center;
   background-color: $left-button;
   color: white;
-  line-height: 47px;
+  line-height: 44px;
   font-weight: 200;
 }
 
@@ -146,7 +146,6 @@ body {
     display: flex;
     align-items: center;
     flex-direction: column;
-    // justify-content: space-between;
     justify-content: center;
 }
 
@@ -164,7 +163,8 @@ body {
   width: 87%;
   background-color: $right-button-2;
   display: flex;
-  margin-bottom: 50px;
+  margin-bottom: 13px;
+  border-radius: 4px;
 }
 
 .view-inner {
@@ -172,6 +172,26 @@ body {
   width: 90%;
   margin: auto;
   background-color: $right-button-1;
+  border-radius: 4px;
+
+}
+
+.dots {
+  width: 87%;
+  height: 10%;
+  display: flex;
+  flex-direction: row;
+}
+
+[class*="dots-col-"] {
+  height: 100%;
+  width: 20%;
+}
+
+.dots-col-1, .dots-col-2, .dots-col-6 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .n-button-group {
@@ -195,7 +215,7 @@ body {
   color: white;
   line-height: 23px;
   text-align: center;
-  line-height: 40px;
+  line-height: 47px;
   font-size: 12px;
   border-radius: 5px;
 }

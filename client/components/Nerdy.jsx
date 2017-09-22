@@ -1,4 +1,12 @@
 import React from 'react';
+/*
+                <svg height="20" width="20">
+                  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+                </svg>
+
+                <svg height="20" width="20">
+                  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
+                </svg>*/
 
 class Nerdy extends React.Component {
   render() {
@@ -12,6 +20,44 @@ class Nerdy extends React.Component {
           <div className="view-2">
             <div className="view-inner">
             </div>
+          </div>
+
+          <div className="dots">
+            <div className="dots-col-1">
+              <svg height="14" width="14" style={{"marginBottom": "6px"}}>
+                <circle cx="7" cy="7" r="7" fill="#f4e842" />
+              </svg>
+
+              <svg height="8" width="8">
+                <circle cx="4" cy="4" r="4" fill="#f4e842" />
+              </svg>
+
+            </div>
+
+            <div className="dots-col-2">
+
+              <svg height="14" width="14" style={{"marginBottom": "6px"}}>
+                <circle cx="7" cy="7" r="7" fill="#f4e842" />
+              </svg>
+
+              <svg height="8" width="8">
+                <circle cx="4" cy="4" r="4" fill="#f4e842" />
+              </svg>
+
+            </div>
+
+            <div className="dots-col-3"></div>
+
+            <div className="dots-col-4"></div>
+
+            <div className="dots-col-5"></div>
+
+            <div className="dots-col-6">
+              <svg width="14" height="30">
+                <rect x="0" y="0" rx="7" ry="7" width="14" height="30" style={{"fill":"red"}} />
+              </svg>
+            </div>
+
           </div>
 
           <div className="n-button-group">
