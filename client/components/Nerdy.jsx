@@ -1,12 +1,4 @@
 import React from 'react';
-/*
-                <svg height="20" width="20">
-                  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-                </svg>
-
-                <svg height="20" width="20">
-                  <circle cx="50" cy="50" r="40" stroke="black" stroke-width="3" fill="red" />
-                </svg>*/
 
 class Nerdy extends React.Component {
   render() {
@@ -14,7 +6,7 @@ class Nerdy extends React.Component {
       <div className="col-md-6 nerdy">
         <div className="nerdy-container">
 
-          <div className="braun"></div>
+          <div className="braun" style={{marginBottom: '13px'}}></div>
 
           <div className="view-outer">
             <div className="view-inner"></div>

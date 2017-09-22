@@ -84,21 +84,22 @@ body {
   justify-content: center;
   align-items: center; }
   .nerdy .nerdy-container {
-    height: 400px;
+    height: 470px;
     width: 320px;
     background-color: #2c2725;
     display: flex;
     align-items: center;
     flex-direction: column;
-    justify-content: center; }
+    justify-content: center;
+    border-radius: 10px; }
+    .nerdy .nerdy-container > div {
+      width: 80%; }
     .nerdy .nerdy-container .braun {
-      width: 87%;
-      height: 20px;
+      height: 18px;
       background: url("https://i.imgur.com/ijgmCC7.png") no-repeat;
       background-size: contain; }
     .nerdy .nerdy-container .view-outer {
       height: 14%;
-      width: 87%;
       background-color: #46372d;
       display: flex;
       margin-bottom: 13px;
@@ -110,7 +111,6 @@ body {
         background-color: #bab59f;
         border-radius: 4px; }
     .nerdy .nerdy-container .dots {
-      width: 87%;
       height: 10%;
       display: flex;
       flex-direction: row; }
@@ -122,8 +122,7 @@ body {
         flex-direction: column;
         align-items: center; }
     .nerdy .nerdy-container .n-button-group {
-      height: 60%;
-      width: 87%;
+      height: 55%;
       display: flex;
       flex-direction: column;
       justify-content: space-between; }

@@ -144,17 +144,21 @@ body {
 
 
   .nerdy-container {
-    height: 400px;
+    height: 470px;
     width: 320px;
     background-color: $right-calc-bg;
     display: flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
+    border-radius: 10px;
+
+    > div {
+      width: 80%;
+    }
 
     .braun {
-      width: 87%;
-      height: 20px;
+      height: 18px;
       background: url('https://i.imgur.com/ijgmCC7.png') no-repeat;
       background-size: contain;
       // background-image: url('/dist/img/Braun.png');
@@ -162,7 +166,6 @@ body {
     
     .view-outer {
       height: 14%;
-      width: 87%;
       background-color: $right-button-2;
       display: flex;
       margin-bottom: 13px;
@@ -178,7 +181,6 @@ body {
     }
     
     .dots {
-      width: 87%;
       height: 10%;
       display: flex;
       flex-direction: row;
@@ -197,8 +199,7 @@ body {
     }
 
     .n-button-group {
-      height: 60%;
-      width: 87%;
+      height: 55%;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
