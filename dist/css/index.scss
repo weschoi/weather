@@ -7,6 +7,7 @@
 
 $left-bg: #e3e3e5;
 $left-button: #242b3f;
+$left-button-hover: #454a5c;
 $sand: #c7aa84;
 $dark-blue: #17122c;
 
@@ -58,71 +59,74 @@ body {
 /* -------------------------------------------------------------------------- */
 
 .sexy {
-    background-color: $left-bg;
-    font-family: 'Oswald', sans-serif;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-}
-
-.sexy-container {
-    height: 400px;
-    width: 240px;
-}
-
-.view {
-  background-color: $gradient-1;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  color: white;
-  height: 32%;
-  line-height: 150px;
-  font-family: 'Oswald', sans-serif;
-  font-weight: 200;
-  font-size: 33px;
-}
-
-.history {
-  background-color: $dark-blue;
-  width: 100%;
-  height: 20px;
-  text-align: right;
-  color: white;
-  height: 10%;
-  line-height: 45px;
-  font-weight: 200;
-  font-size: 13px;
-}
-
-.button-group {
-  height: 58%;
-}
-
-.button-row {
+  background-color: $left-bg;
+  padding: 0px;
   display: flex;
-  height: 20%;
+  justify-content: center;
+  align-items: center;
+
+  > div {
+    color: white;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 200;
+    height: 425px;
+    width: 225px;
+    text-align: center;
+
+    > div {
+      width: 100%;
+    }
+
+    .view {
+      background-color: $gradient-1;
+      height: 50px;
+      height: 34%;
+      text-align: center;
+      line-height: 150px;
+      font-weight: 200;
+      font-size: 33px;
+    }
+
+    .history {
+      background-color: $dark-blue;
+      text-align: right;
+      height: 8%;
+      line-height: 35px;
+      font-size: 11px;
+    }
+
+    .button-group {
+      height: 58%;
+
+      > div {
+        display: flex;
+        height: 20%;
+
+        > div {
+          width: 25%;
+          background-color: $left-button;
+          line-height: 44px;
+          font-size: 13px;
+          transition-timing-function: ease;
+          transition: background-color 1s;
+          border: 1px solid $left-button-hover; 
+        }
+
+        > div:hover {
+          background-color: $left-button-hover;
+        }
+
+        .sexy-button-equal {
+          width: 50%;
+          background-color: $sand;
+          line-height: 47px;
+        }
+      }      
+    }
+  }
 }
 
-.sexy-button {
-  width: 25%;
-  text-align: center;
-  background-color: $left-button;
-  color: white;
-  line-height: 44px;
-  font-weight: 200;
-}
 
-.sexy-button-equal {
-  width: 50%;
-  text-align: center;
-  background-color: $sand;
-  color: white;
-  line-height: 47px;
-  font-weight: 200;
-}
 
 
 
@@ -131,15 +135,15 @@ body {
 /* -------------------------------------------------------------------------- */
 
 .nerdy {
-    background-color: $right-bg;
-    font-family: 'Orbitron', sans-serif;
-    padding: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+  background-color: $right-bg;
+  font-family: 'Orbitron', sans-serif;
+  padding: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
-.nerdy-container {
+
+  .nerdy-container {
     height: 400px;
     width: 320px;
     background-color: $right-calc-bg;
@@ -147,92 +151,103 @@ body {
     align-items: center;
     flex-direction: column;
     justify-content: center;
+
+    .braun {
+      width: 87%;
+      height: 20px;
+      background: url('https://i.imgur.com/ijgmCC7.png') no-repeat;
+      background-size: contain;
+      // background-image: url('/dist/img/Braun.png');
+    }
+    
+    .view-outer {
+      height: 14%;
+      width: 87%;
+      background-color: $right-button-2;
+      display: flex;
+      margin-bottom: 13px;
+      border-radius: 4px;
+
+      .view-inner {
+        height: 70%;
+        width: 90%;
+        margin: auto;
+        background-color: $right-button-1;
+        border-radius: 4px;
+      }
+    }
+    
+    .dots {
+      width: 87%;
+      height: 10%;
+      display: flex;
+      flex-direction: row;
+
+      [class*="dots-col-"] {
+        height: 100%;
+        width: 20%;
+      }
+
+      .dots-col-1, .dots-col-2, .dots-col-6 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      
+    }
+
+    .n-button-group {
+      height: 60%;
+      width: 87%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      > div {
+        display: flex;
+        width: 100%;
+        height: 18%;
+        justify-content: space-between;
+
+        > div {
+          width: 18%;
+          height: 100%;
+          color: white;
+          background-color: $right-button-2;
+
+          text-align: center;
+          vertical-align: middle;
+          line-height: 47px;
+
+          font-size: 12px;
+          border-radius: 5px;
+        }
+
+        .nerdy-button-2 {
+          background-color: $right-button-1;
+          color: $right-calc-bg;
+        }
+
+        .nerdy-button-3 {
+          background-color: $salmon;
+        }
+        
+      }
+      
+    }
+    
+  }
 }
 
-.braun {
-  width: 87%;
-  height: 20px;
-  background: url('https://i.imgur.com/ijgmCC7.png') no-repeat;
-  background-size: contain;
 
-  // background-image: url('/dist/img/Braun.png');
-}
 
-.view-2 {
-  height: 14%;
-  width: 87%;
-  background-color: $right-button-2;
-  display: flex;
-  margin-bottom: 13px;
-  border-radius: 4px;
-}
 
-.view-inner {
-  height: 70%;
-  width: 90%;
-  margin: auto;
-  background-color: $right-button-1;
-  border-radius: 4px;
 
-}
 
-.dots {
-  width: 87%;
-  height: 10%;
-  display: flex;
-  flex-direction: row;
-}
 
-[class*="dots-col-"] {
-  height: 100%;
-  width: 20%;
-}
 
-.dots-col-1, .dots-col-2, .dots-col-6 {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
 
-.n-button-group {
-  height: 60%;
-  width: 87%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
 
-.n-button-row {
-  display: flex;
-  width: 100%;
-  height: 18%;
-  justify-content: space-between;
-}
-
-[class*="nerdy-button"] {
-  width: 18%;
-  height: 100%;
-  color: white;
-  line-height: 23px;
-  text-align: center;
-  line-height: 47px;
-  font-size: 12px;
-  border-radius: 5px;
-}
-
-.nerdy-button-1 {
-  background-color: $right-button-2;
-}
-
-.nerdy-button-2 {
-  background-color: $right-button-1;
-  color: $right-calc-bg;
-}
-
-.nerdy-button-3 {
-  background-color: $salmon;
-  color: white;
-}
 
 
 

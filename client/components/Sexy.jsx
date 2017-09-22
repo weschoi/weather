@@ -4,47 +4,48 @@ class Sexy extends React.Component {
   render() {
     return (
       <div className="col-md-6 sexy">
-        <div className="sexy-container">
-          <div className="view">
-            4602
-          </div>
+
+        <div>
+
+          <div className="view">4602</div>
+
           <div className="history">
-            4576 <span id="">+</span> 24 <span id="">=</span> 4602
+            <span style={{"marginRight": "20px"}}>4576 <span id="">+</span> 24 <span id="">=</span> 4602</span>
           </div>
 
           <div className='button-group'>
 
-            <div className="button-row">
-              <div className="sexy-button">C</div>
-              <div className="sexy-button">+/-</div>
-              <div className="sexy-button">%</div>
-              <div className="sexy-button">/</div>
+            <div>
+              <div>C</div>
+              <div>+/-</div>
+              <div>%</div>
+              <div>/</div>
             </div>
 
-            <div className="button-row">
-              <div className="sexy-button">7</div>
-              <div className="sexy-button">8</div>
-              <div className="sexy-button">9</div>
-              <div className="sexy-button">x</div>
+            <div>
+              <div>7</div>
+              <div>8</div>
+              <div>9</div>
+              <div>x</div>
             </div>
 
-            <div className="button-row">
-              <div className="sexy-button">4</div>
-              <div className="sexy-button">5</div>
-              <div className="sexy-button">6</div>
-              <div className="sexy-button">-</div>
+            <div>
+              <div>4</div>
+              <div>5</div>
+              <div>6</div>
+              <div>-</div>
             </div>
 
-            <div className="button-row">
-              <div className="sexy-button">1</div>
-              <div className="sexy-button">2</div>
-              <div className="sexy-button">3</div>
-              <div className="sexy-button">+</div>
+            <div>
+              <div>1</div>
+              <div>2</div>
+              <div>3</div>
+              <div>+</div>
             </div>
 
-            <div className="button-row">
-              <div className="sexy-button">1</div>
-              <div className="sexy-button">0</div>
+            <div>
+              <div>1</div>
+              <div>0</div>
               <div className="sexy-button-equal">=</div>
             </div>
 
