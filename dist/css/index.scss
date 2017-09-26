@@ -28,7 +28,7 @@ $mint: #76af87;
 
 
 * {
-    border: 1px solid red;
+    // border: 1px solid red;
 }
 
 html,
@@ -87,16 +87,65 @@ body {
       display: flex;
       flex-direction: column;
 
-      .result {
+      > div {
         width: 100%;
-        height: 80%;
+      }
+
+      .view-header {
+        height: 12%;
+        display: flex;
+        margin-top: 5px;
+
+        > div {
+          flex: 1;
+        }
+
+        .signal {
+          display: flex;
+
+          > div {
+            display: flex;
+            width: 60%;
+            height: 100%;
+            margin-left: 5px;
+            justify-content: space-around;
+
+            [class*="signal-circle-"] {
+              width: 14%;
+              height: 37%;
+              background: white;
+              border: 1px solid white;
+              border-radius: 6px;
+            }
+
+            .signal-circle-2 {
+              background: none;
+            }
+
+          }
+        }
+
+        .time {
+          font-size: 10px;
+        }
+
+        .battery {
+          display: flex;
+
+          .battery-percent {
+            font-size: 10px;
+          }
+        }
+      }
+
+      .result {
+        height: 60%;
         line-height: 130px;
         font-weight: 200;
         font-size: 33px;
       }
 
       .view-footer {
-        width: 100%;
         height: 15%;
 
         > div {
@@ -109,7 +158,7 @@ body {
           font-size: 12px;
           line-height: 0px;
 
-          .x-circle {
+          > div {
             height: 100%;
             width: 33%;
             background: $dark-blue;
@@ -154,7 +203,22 @@ body {
           font-size: 13px;
           transition-timing-function: ease;
           transition: background-color 1s;
-          border: 1px solid $left-button-hover; 
+          border: 1px solid $left-button-hover;
+          position: relative;
+
+          > div {
+            height: 43%;
+            width: 40%;
+            background: $sand;
+            margin: auto auto;
+            border-radius: 30px;
+            line-height: 16px;
+            color: $left-button;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+          }
         }
 
         > div:hover {

@@ -6,6 +6,7 @@ class Sexy extends React.Component {
     this.state = {
       result: '',
       record: '',
+      time: '',
     };
 
     this.handleClick = this.handleClick.bind(this);
@@ -23,7 +24,31 @@ class Sexy extends React.Component {
   handleEnter() {
     this.setState({result: eval(this.state.record)})
   }
-            // <span style={{"marginRight": "20px"}}>4576 <span id="">+</span> 24 <span id="">=</span> 4602</span>
+
+  // setTime() {
+  //   this.setState({time: })
+  // }
+
+  componentWillMount() {
+    let date = new Date();
+    let hour = date.getHours();
+    let minute = date.getMinutes();
+    let morningOrNight = '';
+
+    if (hour > 11) {
+      morningOrNight = 'PM';
+    } else {
+      morningOrNight = 'AM';
+    }
+    if (hour === 0) {
+      hour = 12;
+    } else if (hour > 12) {
+      hour -= 12;
+    }
+    if (minute < 10 && minute > 0) minute = '0' + minute;
+
+    this.setState({time: `${hour}:${minute} ${morningOrNight}`});
+  }
 
   render() {
     return (
@@ -31,12 +56,31 @@ class Sexy extends React.Component {
 
         <div>
           <div className="view">
+            <div className="view-header">
+              <div className="signal">
+                <div>
+                  <div className="signal-circle-1"></div>
+                  <div className="signal-circle-1"></div>
+                  <div className="signal-circle-1"></div>
+                  <div className="signal-circle-2"></div>
+                  <div className="signal-circle-2"></div>
+                </div>
+              </div>
+              <div className="time">
+                {this.state.time}
+              </div>
+              <div className="battery">
+                <div className="battery-percent">42%</div>
+                <div className="battery-icon">
+                </div>
+              </div>
+            </div>
             <div className="result">
               {this.state.result}
             </div>
             <div className="view-footer">>
               <div className="x">
-                <div className="x-circle">
+                <div>
                   x
                 </div>
               </div>
