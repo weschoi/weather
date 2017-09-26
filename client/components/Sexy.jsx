@@ -30,17 +30,35 @@ class Sexy extends React.Component {
       <div className="col-md-6 sexy">
 
         <div>
+          <div className="view">
+            <div className="result">
+              {this.state.result}
+            </div>
+            <div className="view-footer">>
+              <div className="x">
+                <div className="x-circle">
+                  x
+                </div>
+              </div>
+              <div className="previous-record">
+                x
+              </div>
+            </div>
 
-          <div className="view">{this.state.result}</div>
+          </div>
 
           <div className="history">
-            <span>{this.state.record}</span>
+            <span id="history-text">{this.state.record}</span>
           </div>
 
           <div className='button-group'>
 
             <div>
-              <div onClick={() => {this.handleClear() }}>C</div>
+              <div onClick={() => {this.handleClear() }}>
+                <div>
+                  C
+                </div>
+              </div>
               <div>+/-</div>
               <div>%</div>
               <div onClick={() => {this.handleClick('/') }}>/</div>
