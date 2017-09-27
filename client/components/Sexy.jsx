@@ -22,24 +22,23 @@ class Sexy extends React.Component {
   }
 
   handleEnter() {
+    let result = eval(this.state.record).toString();
+    
+
+
+
+    // console.log(Math.round(10 * eval(this.state.record))
+
     this.setState({result: eval(this.state.record)})
   }
-
-  // setTime() {
-  //   this.setState({time: })
-  // }
 
   componentWillMount() {
     let date = new Date();
     let hour = date.getHours();
     let minute = date.getMinutes();
-    let morningOrNight = '';
+    let morningOrNight = 'AM';
 
-    if (hour > 11) {
-      morningOrNight = 'PM';
-    } else {
-      morningOrNight = 'AM';
-    }
+    if (hour > 11) morningOrNight = 'PM';
     if (hour === 0) {
       hour = 12;
     } else if (hour > 12) {
@@ -112,7 +111,7 @@ class Sexy extends React.Component {
               <div onClick={() => {this.handleClick('7') }}>7</div>
               <div onClick={() => {this.handleClick('8') }}>8</div>
               <div onClick={() => {this.handleClick('9') }}>9</div>
-              <div onClick={() => {this.handleClick('x') }}>x</div>
+              <div onClick={() => {this.handleClick('*') }}>x</div>
             </div>
 
             <div>
