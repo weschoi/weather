@@ -177,7 +177,6 @@ body {
       height: 14%;
       background-color: #46372d;
       display: flex;
-      margin-bottom: 13px;
       border-radius: 4px; }
       .nerdy .nerdy-container .view-outer .view-inner {
         height: 70%;
@@ -194,11 +193,38 @@ body {
       flex-direction: row; }
       .nerdy .nerdy-container .dots [class*="dots-col-"] {
         height: 100%;
-        width: 20%; }
-      .nerdy .nerdy-container .dots .dots-col-1, .nerdy .nerdy-container .dots .dots-col-2, .nerdy .nerdy-container .dots .dots-col-6 {
+        width: 20%;
         display: flex;
         flex-direction: column;
-        align-items: center; }
+        align-items: center;
+        justify-content: center; }
+      .nerdy .nerdy-container .dots .dots-col-6 {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 12px; }
+        .nerdy .nerdy-container .dots .dots-col-6 .dot-series {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center; }
+      .nerdy .nerdy-container .dots .switch-container {
+        -webkit-border-radius: 510px;
+        -moz-border-radius: 510px;
+        -ms-border-radius: 510px;
+        border-radius: 510px;
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        background: #46372d;
+        width: 14px; }
+        .nerdy .nerdy-container .dots .switch-container > div {
+          -webkit-border-radius: 510px;
+          -moz-border-radius: 510px;
+          -ms-border-radius: 510px;
+          border-radius: 510px;
+          width: 100%;
+          height: 45%;
+          background: #fd6433; }
     .nerdy .nerdy-container .n-button-group {
       height: 55%;
       display: flex;

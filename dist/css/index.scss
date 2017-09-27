@@ -26,6 +26,12 @@ $right-button-2: #46372d;
 $salmon: #fd6433;
 $mint: #76af87;
 
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+  -moz-border-radius: $radius;
+  -ms-border-radius: $radius;
+  border-radius: $radius;
+}
 
 * {
     // border: 1px solid red;
@@ -277,7 +283,7 @@ body {
       height: 14%;
       background-color: $right-button-2;
       display: flex;
-      margin-bottom: 13px;
+      // margin-bottom: 13px;
       border-radius: 4px;
 
       .view-inner {
@@ -300,12 +306,39 @@ body {
       [class*="dots-col-"] {
         height: 100%;
         width: 20%;
-      }
-
-      .dots-col-1, .dots-col-2, .dots-col-6 {
         display: flex;
         flex-direction: column;
         align-items: center;
+        justify-content: center;
+      }
+
+      .dots-col-6 {
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 12px;
+
+        .dot-series {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+        }
+      }
+
+      .switch-container {
+        @include border-radius(510px);
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        background: $right-button-2;
+        width: 14px;
+
+        > div {
+          @include border-radius(510px);
+          width: 100%;
+          height: 45%;
+          background: $salmon;
+        }
       }
       
     }
