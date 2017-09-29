@@ -48,6 +48,7 @@ $mint: #76af87;
 
 
 * {
+  // box-sizing: border-box;
     // border: 1px solid red;
 }
 
@@ -81,7 +82,7 @@ body {
 .sexy {
   // background: $left-bg;
   // background: $left-bg-2;
-  @include gradient($gradient-1*1.5, $gradient-2*1.5);
+  @include gradient($gradient-2*1.5, $gradient-1*1.5);
   // background-color: white;
   padding: 0px;
   display: flex;
@@ -99,28 +100,29 @@ body {
     align-items: center;
     flex-direction: column;
     background: $iphone-bg;
-    box-shadow: 5px 5px 5px 0px $gradient-1*.7;
+    box-shadow: 5px 5px 15px 0px $gradient-1*.9;
 
     .iphone-section-1 {
       height: 80px;
       width: 205px;
-      border: 2px solid red;
       display: flex;
       justify-content: center;
       align-items: center;
 
+      > div {
+        background: $iphone-features;
+      }
+
       .long-rectangle {
-        background: black;
         width: 40px;
-        height: 7px;
+        height: 6px;
         margin: 0 5px;
         @include border-radius(7px);
       }
 
       .short-rectangle {
-        background: black;
-        width: 7px;
-        height: 7px;
+        width: 6px;
+        height: 6px;
         margin: 0 5px;
         @include border-radius(7px);
       }
@@ -129,7 +131,10 @@ body {
     .iphone-section-3 {
       height: 80px;
       width: 205px;
-      border: 2px solid red;
+      // border: 2px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
 
     .iphone-section-2 {
@@ -169,17 +174,19 @@ body {
 
             > div {
               display: flex;
-              width: 60%;
+              flex-direction: row;
+              width: 45%;
               height: 100%;
               margin-left: 5px;
               justify-content: space-around;
+              // box-sizing: content-box;
 
               [class*="signal-circle-"] {
-                width: 14%;
-                height: 37%;
+                width: 4px;
+                height: 4px;
                 background: white;
                 border: 1px solid white;
-                border-radius: 6px;
+                border-radius: 10px;
               }
 
               .signal-circle-2 {
@@ -190,14 +197,18 @@ body {
           }
 
           .time {
-            font-size: 10px;
+            font-size: 8px;
+            font-weight: 300;
+            line-height: 5px;
           }
 
           .battery {
             display: flex;
 
             .battery-percent {
-              font-size: 10px;
+              font-size: 8px;
+              font-weight: 300;
+              line-height: 5px;
             }
           }
         }

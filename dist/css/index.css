@@ -25,13 +25,13 @@ body {
 /* Sexy
 /* -------------------------------------------------------------------------- */
 .sexy {
-  background: -webkit-linear-gradient(#ff81ff, #b687ff);
+  background: -webkit-linear-gradient(#b687ff, #ff81ff);
   /* For Safari 5.1 to 6.0 */
-  background: -o-linear-gradient(#ff81ff, #b687ff);
+  background: -o-linear-gradient(#b687ff, #ff81ff);
   /* For Opera 11.1 to 12.0 */
-  background: -moz-linear-gradient(#ff81ff, #b687ff);
+  background: -moz-linear-gradient(#b687ff, #ff81ff);
   /* For Firefox 3.6 to 15 */
-  background: linear-gradient(down, #ff81ff, #b687ff);
+  background: linear-gradient(down, #b687ff, #ff81ff);
   /* Standard syntax */
   padding: 0px;
   display: flex;
@@ -50,27 +50,26 @@ body {
     align-items: center;
     flex-direction: column;
     background: #dcdfe6;
-    box-shadow: 5px 5px 5px 0px #7c3ca9; }
+    box-shadow: 5px 5px 15px 0px #9f4dda; }
     .sexy > div .iphone-section-1 {
       height: 80px;
       width: 205px;
-      border: 2px solid red;
       display: flex;
       justify-content: center;
       align-items: center; }
+      .sexy > div .iphone-section-1 > div {
+        background: #a1a5b3; }
       .sexy > div .iphone-section-1 .long-rectangle {
-        background: black;
         width: 40px;
-        height: 7px;
+        height: 6px;
         margin: 0 5px;
         -webkit-border-radius: 7px;
         -moz-border-radius: 7px;
         -ms-border-radius: 7px;
         border-radius: 7px; }
       .sexy > div .iphone-section-1 .short-rectangle {
-        background: black;
-        width: 7px;
-        height: 7px;
+        width: 6px;
+        height: 6px;
         margin: 0 5px;
         -webkit-border-radius: 7px;
         -moz-border-radius: 7px;
@@ -79,7 +78,9 @@ body {
     .sexy > div .iphone-section-3 {
       height: 80px;
       width: 205px;
-      border: 2px solid red; }
+      display: flex;
+      justify-content: center;
+      align-items: center; }
     .sexy > div .iphone-section-2 {
       color: white;
       font-family: 'Oswald', sans-serif;
@@ -114,24 +115,29 @@ body {
             display: flex; }
             .sexy > div .iphone-section-2 .view .view-header .signal > div {
               display: flex;
-              width: 60%;
+              flex-direction: row;
+              width: 45%;
               height: 100%;
               margin-left: 5px;
               justify-content: space-around; }
               .sexy > div .iphone-section-2 .view .view-header .signal > div [class*="signal-circle-"] {
-                width: 14%;
-                height: 37%;
+                width: 4px;
+                height: 4px;
                 background: white;
                 border: 1px solid white;
-                border-radius: 6px; }
+                border-radius: 10px; }
               .sexy > div .iphone-section-2 .view .view-header .signal > div .signal-circle-2 {
                 background: none; }
           .sexy > div .iphone-section-2 .view .view-header .time {
-            font-size: 10px; }
+            font-size: 8px;
+            font-weight: 300;
+            line-height: 5px; }
           .sexy > div .iphone-section-2 .view .view-header .battery {
             display: flex; }
             .sexy > div .iphone-section-2 .view .view-header .battery .battery-percent {
-              font-size: 10px; }
+              font-size: 8px;
+              font-weight: 300;
+              line-height: 5px; }
         .sexy > div .iphone-section-2 .view .result {
           height: 60%;
           line-height: 130px;

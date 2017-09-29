@@ -143,6 +143,9 @@ class Sexy extends React.Component {
             </div>
           </div>
           <div className="iphone-section-3">
+              <svg height="28" width="28">
+                <circle cx="14" cy="14" r="12" fill="#dcdfe6" stroke="#a1a5b3" strokeWidth="2" />
+              </svg>
           </div>
 
         </div>
