@@ -5,7 +5,12 @@
 /* Sexy Variables
 /* -------------------------------------------------------------------------- */
 
+
+$iphone-bg: #dcdfe6;
+$iphone-features: #a1a5b3;
+
 $left-bg: #e3e3e5;
+$left-bg-2: #31b69f;
 $left-button: #242b3f;
 $left-button-hover: #454a5c;
 $sand: #c7aa84;
@@ -32,6 +37,15 @@ $mint: #76af87;
   -ms-border-radius: $radius;
   border-radius: $radius;
 }
+
+@mixin gradient($gradient-1, $gradient-2) {
+  background: -webkit-linear-gradient($gradient-1, $gradient-2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($gradient-1, $gradient-2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($gradient-1, $gradient-2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient(down, $gradient-1, $gradient-2); /* Standard syntax */
+  
+}
+
 
 * {
     // border: 1px solid red;
@@ -65,178 +79,227 @@ body {
 /* -------------------------------------------------------------------------- */
 
 .sexy {
-  background-color: $left-bg;
+  // background: $left-bg;
+  // background: $left-bg-2;
+  @include gradient($gradient-1*1.5, $gradient-2*1.5);
+  // background-color: white;
   padding: 0px;
   display: flex;
   justify-content: center;
   align-items: center;
 
   > div {
-    color: white;
-    font-family: 'Oswald', sans-serif;
-    font-weight: 200;
-    height: 425px;
-    width: 225px;
-    text-align: center;
 
-    > div {
-      width: 100%;
+    display: flex;
+    width: 230px;
+    height: 470px;
+    border: 3px solid white;
+    @include border-radius(26px);
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: $iphone-bg;
+    box-shadow: 5px 5px 5px 0px $gradient-1*.7;
+
+    .iphone-section-1 {
+      height: 80px;
+      width: 205px;
+      border: 2px solid red;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      .long-rectangle {
+        background: black;
+        width: 40px;
+        height: 7px;
+        margin: 0 5px;
+        @include border-radius(7px);
+      }
+
+      .short-rectangle {
+        background: black;
+        width: 7px;
+        height: 7px;
+        margin: 0 5px;
+        @include border-radius(7px);
+      }
     }
 
-    .view {
-      background-color: $gradient-1;
-      background: -webkit-linear-gradient($gradient-1, $gradient-2); /* For Safari 5.1 to 6.0 */
-      background: -o-linear-gradient($gradient-1, $gradient-2); /* For Opera 11.1 to 12.0 */
-      background: -moz-linear-gradient($gradient-1, $gradient-2); /* For Firefox 3.6 to 15 */
-      background: linear-gradient(down, $gradient-1, $gradient-2); /* Standard syntax */
-      height: 34%;
-      display: flex;
-      flex-direction: column;
+    .iphone-section-3 {
+      height: 80px;
+      width: 205px;
+      border: 2px solid red;
+    }
+
+    .iphone-section-2 {
+      color: white;
+      font-family: 'Oswald', sans-serif;
+      font-weight: 200;
+      height: 370px;
+      width: 205px;
+      text-align: center;
 
       > div {
         width: 100%;
       }
 
-      .view-header {
-        height: 12%;
+      .view {
+        background-color: $gradient-1;
+        @include gradient($gradient-1, $gradient-2);
+        height: 34%;
         display: flex;
-        margin-top: 5px;
+        flex-direction: column;
 
         > div {
-          flex: 1;
+          width: 100%;
         }
 
-        .signal {
+        .view-header {
+          height: 12%;
           display: flex;
+          margin-top: 5px;
 
           > div {
-            display: flex;
-            width: 60%;
-            height: 100%;
-            margin-left: 5px;
-            justify-content: space-around;
-
-            [class*="signal-circle-"] {
-              width: 14%;
-              height: 37%;
-              background: white;
-              border: 1px solid white;
-              border-radius: 6px;
-            }
-
-            .signal-circle-2 {
-              background: none;
-            }
-
+            flex: 1;
           }
-        }
 
-        .time {
-          font-size: 10px;
-        }
+          .signal {
+            display: flex;
 
-        .battery {
-          display: flex;
+            > div {
+              display: flex;
+              width: 60%;
+              height: 100%;
+              margin-left: 5px;
+              justify-content: space-around;
 
-          .battery-percent {
+              [class*="signal-circle-"] {
+                width: 14%;
+                height: 37%;
+                background: white;
+                border: 1px solid white;
+                border-radius: 6px;
+              }
+
+              .signal-circle-2 {
+                background: none;
+              }
+
+            }
+          }
+
+          .time {
             font-size: 10px;
           }
-        }
-      }
 
-      .result {
-        height: 60%;
-        line-height: 130px;
-        font-weight: 200;
-        font-size: 33px;
-      }
+          .battery {
+            display: flex;
 
-      .view-footer {
-        height: 15%;
-
-        > div {
-          height: 100%;
-          width: 25%;
+            .battery-percent {
+              font-size: 10px;
+            }
+          }
         }
 
-        .x {
-          float: left;
-          font-size: 12px;
-          line-height: 0px;
+        .result {
+          height: 60%;
+          line-height: 130px;
+          font-weight: 200;
+          font-size: 33px;
+        }
+
+        .view-footer {
+          height: 15%;
 
           > div {
             height: 100%;
-            width: 33%;
-            background: $dark-blue;
-            margin: 0 auto;
-            border-radius: 30px;
+            width: 25%;
+          }
+
+          .x {
+            float: left;
+            font-size: 12px;
+            line-height: 0px;
+
+            > div {
+              height: 100%;
+              width: 33%;
+              background: $dark-blue;
+              margin: 0 auto;
+              border-radius: 30px;
+              line-height: 13px;
+            }
+          }
+
+          .previous-record {
+            float: right;
+            font-size: 12px;
             line-height: 13px;
           }
         }
 
-        .previous-record {
-          float: right;
-          font-size: 12px;
-          line-height: 13px;
+      }
+
+      .history {
+        background-color: $dark-blue;
+        text-align: right;
+        height: 8%;
+        line-height: 35px;
+        font-size: 11px;
+
+        #history-text {
+          margin-right: 20px;
         }
       }
 
-    }
-
-    .history {
-      background-color: $dark-blue;
-      text-align: right;
-      height: 8%;
-      line-height: 35px;
-      font-size: 11px;
-
-      #history-text {
-        margin-right: 20px;
-      }
-    }
-
-    .button-group {
-      height: 58%;
-
-      > div {
-        display: flex;
-        height: 20%;
+      .button-group {
+        height: 58%;
 
         > div {
-          width: 25%;
-          background-color: $left-button;
-          line-height: 44px;
-          font-size: 13px;
-          transition-timing-function: ease;
-          transition: background-color 1s;
-          border: 1px solid $left-button-hover;
-          position: relative;
+          display: flex;
+          height: 20%;
 
           > div {
-            height: 43%;
-            width: 40%;
-            background: $sand;
-            margin: auto auto;
-            border-radius: 30px;
-            line-height: 16px;
-            color: $left-button;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%,-50%);
+            width: 25%;
+            background-color: $left-button;
+            line-height: 44px;
+            font-size: 13px;
+            transition-timing-function: ease;
+            transition: background-color 1s;
+            border: 1px solid $left-button-hover;
+            position: relative;
+
+            > div {
+              height: 43%;
+              width: 40%;
+              background: $sand;
+              margin: auto auto;
+              border-radius: 30px;
+              line-height: 16px;
+              color: $left-button;
+              position: absolute;
+              top: 50%;
+              left: 50%;
+              transform: translate(-50%,-50%);
+            }
           }
-        }
 
-        > div:hover {
-          background-color: $left-button-hover;
-        }
+          > div:hover {
+            background-color: $left-button-hover;
+          }
 
-        .sexy-button-equal {
-          width: 50%;
-          background-color: $sand;
-          line-height: 47px;
-        }
-      }      
+          .operator {
+            color: $sand;
+          }
+
+          .sexy-button-equal {
+            width: 50%;
+            background-color: $sand;
+            line-height: 47px;
+          }
+        }      
+      }
     }
   }
 }
@@ -260,7 +323,7 @@ body {
 
   .nerdy-container {
     height: 470px;
-    width: 320px;
+    width: 310px;
     background-color: $right-calc-bg;
     display: flex;
     align-items: center;
