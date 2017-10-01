@@ -1,4 +1,7 @@
 import React from 'react';
+import roundTo from 'round-to';
+// const roundTo = require('round-to');
+
 
 class Sexy extends React.Component {
   constructor(props) {
@@ -22,14 +25,33 @@ class Sexy extends React.Component {
   }
 
   handleEnter() {
-    let result = eval(this.state.record).toString();
-    
+    let resultNumber = eval(this.state.record);
+    let resultString = eval(this.state.record).toString();
+    let newResult = '';
+    let start = '';
 
+    if (resultNumber > 99999999) {
+      if (resultString.indexOf('e') !== -1) {
+        newResult = resultString;
+      } else {
+        newResult = `${resultString[0]}.${resultString[1]+resultString[2]}e${(resultString.length-1)}`;
+      }
+      // newResult = `${resultString[0]}.${resultString[1]+resultString[2]}*10${(resultString.length-1)}`;
+      this.setState({result: newResult});
+    } else if (resultNumber < .00000001) {
+      console.log('resultString:', resultString);
+      for (let i = 0; i < resultString.length; i++) {
+        if (resultString[i] !== '0' && resultString[i] !== '.') {
+          start = `${resultString[i]}.${(resultString[i+1] || '0') + (resultString[i+2] || '0')}e-${i}`;
+          this.setState({result: start});
+        }
+      }
+    } else if (resultString.length > 10) {
+      this.setState({result: resultString.slice(0,8)});
+    } else {
+      this.setState({result: resultString});
+    }
 
-
-    // console.log(Math.round(10 * eval(this.state.record))
-
-    this.setState({result: eval(this.state.record)})
   }
 
   componentWillMount() {
@@ -59,16 +81,27 @@ class Sexy extends React.Component {
             <div className="long-rectangle"></div>
             <div className="short-rectangle"></div>
           </div>
+
+
+
+
+
+
+
+
+
           <div className="iphone-section-2">
             <div className="view">
               <div className="view-header">
                 <div className="signal">
-                  <div>
+                  <div className="signal-circles-container">
                     <div className="signal-circle-1"></div>
                     <div className="signal-circle-1"></div>
                     <div className="signal-circle-1"></div>
                     <div className="signal-circle-2"></div>
                     <div className="signal-circle-2"></div>
+                  </div>
+                  <div className="wifi">
                   </div>
                 </div>
                 <div className="time">
@@ -76,15 +109,15 @@ class Sexy extends React.Component {
                 </div>
                 <div className="battery">
                   <div className="battery-percent">42%</div>
-                  <div className="battery-icon">
-                  </div>
+                  <div className="bluetooth-icon"></div>
+                  <div className="battery-icon"></div>
                 </div>
               </div>
               <div className="result">
                 {this.state.result}
               </div>
               <div className="view-footer">>
-                <div className="x">
+                <div className="x" onClick={() => {console.log('clicked!')}}>
                   <div>
                     x
                   </div>
@@ -142,6 +175,10 @@ class Sexy extends React.Component {
 
             </div>
           </div>
+
+
+
+
           <div className="iphone-section-3">
               <svg height="28" width="28">
                 <circle cx="14" cy="14" r="12" fill="#dcdfe6" stroke="#a1a5b3" strokeWidth="2" />
