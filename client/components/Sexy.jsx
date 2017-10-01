@@ -17,7 +17,11 @@ class Sexy extends React.Component {
   }
 
   handleClick(num) {
-    this.setState({record: this.state.record + num});
+    if (num === '-' && this.state.record[this.state.record.length-1] === '-') {
+      this.setState({record: this.state.record.slice(0, this.state.record.length-1) });
+    } else {
+      this.setState({record: this.state.record + num});
+    }
   }
 
   handleClear() {
@@ -27,23 +31,15 @@ class Sexy extends React.Component {
   handleEnter() {
     let resultNumber = eval(this.state.record);
     let resultString = eval(this.state.record).toString();
-    let newResult = '';
-    let start = '';
 
-    if (resultNumber > 99999999) {
-      if (resultString.indexOf('e') !== -1) {
-        newResult = resultString;
-      } else {
-        newResult = `${resultString[0]}.${resultString[1]+resultString[2]}e${(resultString.length-1)}`;
-      }
-      // newResult = `${resultString[0]}.${resultString[1]+resultString[2]}*10${(resultString.length-1)}`;
-      this.setState({result: newResult});
-    } else if (resultNumber < .00000001) {
-      console.log('resultString:', resultString);
+    if (resultString.includes('e')) {
+      this.setState({result: resultString.slice(0,4) + resultString.slice(resultString.indexOf('e'), resultString.length)});
+    } else if (resultNumber > 99999999) {
+      this.setState({result: `${resultString[0]}.${resultString[1]+resultString[2]}e${(resultString.length-1)}`});
+    } else if (resultNumber < .00000001 && resultNumber > 0) {
       for (let i = 0; i < resultString.length; i++) {
         if (resultString[i] !== '0' && resultString[i] !== '.') {
-          start = `${resultString[i]}.${(resultString[i+1] || '0') + (resultString[i+2] || '0')}e-${i}`;
-          this.setState({result: start});
+          this.setState({result: `${resultString[i]}.${(resultString[i+1] || '0') + (resultString[i+2] || '0')}e-${i}`});
         }
       }
     } else if (resultString.length > 10) {
@@ -51,7 +47,6 @@ class Sexy extends React.Component {
     } else {
       this.setState({result: resultString});
     }
-
   }
 
   componentWillMount() {
@@ -141,35 +136,35 @@ class Sexy extends React.Component {
                     C
                   </div>
                 </div>
-                <div className="operator">+/-</div>
+                <div onClick={() => {this.handleClick('-') }} className="operator">+/-</div>
                 <div className="operator">%</div>
-                <div onClick={() => {this.handleClick('/') }} className="operator">/</div>
+                <div onClick={() => {this.handleClick('/ ') }} className="operator">/</div>
               </div>
 
               <div>
-                <div onClick={() => {this.handleClick('7') }}>7</div>
-                <div onClick={() => {this.handleClick('8') }}>8</div>
-                <div onClick={() => {this.handleClick('9') }}>9</div>
-                <div onClick={() => {this.handleClick('*') }} className="operator">x</div>
+                <div onClick={() => {this.handleClick('7 ') }}>7</div>
+                <div onClick={() => {this.handleClick('8 ') }}>8</div>
+                <div onClick={() => {this.handleClick('9 ') }}>9</div>
+                <div onClick={() => {this.handleClick('* ') }} className="operator">x</div>
               </div>
 
               <div>
-                <div onClick={() => {this.handleClick('4') }}>4</div>
-                <div onClick={() => {this.handleClick('5') }}>5</div>
-                <div onClick={() => {this.handleClick('6') }}>6</div>
-                <div onClick={() => {this.handleClick('-') }} className="operator">-</div>
+                <div onClick={() => {this.handleClick('4 ') }}>4</div>
+                <div onClick={() => {this.handleClick('5 ') }}>5</div>
+                <div onClick={() => {this.handleClick('6 ') }}>6</div>
+                <div onClick={() => {this.handleClick('- ') }} className="operator">-</div>
               </div>
 
               <div>
-                <div onClick={() => {this.handleClick('1') }}>1</div>
-                <div onClick={() => {this.handleClick('2') }}>2</div>
-                <div onClick={() => {this.handleClick('3') }}>3</div>
-                <div onClick={() => {this.handleClick('+') }} className="operator">+</div>
+                <div onClick={() => {this.handleClick('1 ') }}>1</div>
+                <div onClick={() => {this.handleClick('2 ') }}>2</div>
+                <div onClick={() => {this.handleClick('3 ') }}>3</div>
+                <div onClick={() => {this.handleClick('+ ') }} className="operator">+</div>
               </div>
 
               <div>
                 <div onClick={() => {this.handleClick('.') }}>.</div>
-                <div onClick={() => {this.handleClick('0') }}>0</div>
+                <div onClick={() => {this.handleClick('0 ') }}>0</div>
                 <div className="sexy-button-equal" onClick={() => {this.handleEnter()}}>=</div>
               </div>
 
