@@ -1,6 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900');
 // @import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:200,200i,300,300i,400,400i,600,600i,700,700i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900');
+@import url('https://fonts.googleapis.com/css?family=Aldrich');
+@import url('https://fonts.googleapis.com/css?family=Jura:300,400,500,600,700');
+
 
 /* -------------------------------------------------------------------------- */
 /* Sexy Variables
@@ -12,7 +16,6 @@ $iphone-features: #a1a5b3;
 $left-bg: #e3e3e5;
 $left-bg-2: #31b69f;
 $left-button: #242b3f;
-$left-button-hover: #454a5c;
 $sand: #c7aa84;
 $dark-blue: #17122c;
 
@@ -38,11 +41,11 @@ $mint: #76af87;
   border-radius: $radius;
 }
 
-@mixin gradient($gradient-1, $gradient-2) {
+@mixin gradient($degree, $gradient-1, $gradient-2) {
   background: -webkit-linear-gradient($gradient-1, $gradient-2); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient($gradient-1, $gradient-2); /* For Opera 11.1 to 12.0 */
   background: -moz-linear-gradient($gradient-1, $gradient-2); /* For Firefox 3.6 to 15 */
-  background: linear-gradient(down, $gradient-1, $gradient-2); /* Standard syntax */
+  background: linear-gradient($degree, $gradient-1, $gradient-2); /* Standard syntax */
   
 }
 
@@ -82,8 +85,17 @@ body {
 .sexy {
   // background: $left-bg;
   // background: $left-bg-2;
-  @include gradient($gradient-2*1.5, $gradient-1*1.5);
-  // background-color: white;
+  // background-image: linear-gradient(to right, #ff8177 0%, #ff867a 0%, #ff8c7f 21%, #f99185 52%, #cf556c 78%, #b12a5b 100%);
+  // @include gradient(180deg, #667eea, #764ba2);
+  // @include gradient(0deg, #c471f5, #fa71cd);
+  background-image: linear-gradient(60deg, #3d3393 0%, #2b76b9 37%, #2cacd1 65%, #35eb93 100%);
+  // background-image: linear-gradient(to top, #65bd60 0%, #5ac1a8 25%, #3ec6ed 50%, #b7ddb7 75%, #fef381 100%);
+  // background-image: linear-gradient(to bottom, #3ab5b0 0%, #3d99be 31%, #56317a 100%);
+  // background-image: linear-gradient(to top, #3b41c5 0%, #a981bb 49%, #ffc8a9 100%);
+  // background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
+  // background-image: linear-gradient(to top, #0250c5 0%, #d43f8d 100%);
+  // background-image: linear-gradient(to bottom, #6a11cb 0%, #2575fc 100%);
+  // background-image: linear-gradient(to bottom, #3f51b1 0%, #5a55ae 13%, #7b5fac 25%, #8f6aae 38%, #a86aa4 50%, #cc6b8e 62%, #f18271 75%, #f3a469 87%, #f7c978 100%);
   padding: 0px;
   display: flex;
   justify-content: center;
@@ -100,7 +112,7 @@ body {
     align-items: center;
     flex-direction: column;
     background: $iphone-bg;
-    box-shadow: 5px 5px 15px 0px $gradient-1*.9;
+    box-shadow: 5px 5px 15px 0px #2cacd1*0.7;
 
     .iphone-section-1 {
       height: 80px;
@@ -151,7 +163,7 @@ body {
 
       .view {
         background-color: $gradient-1;
-        @include gradient($gradient-1, $gradient-2);
+        @include gradient(down, $gradient-1, $gradient-2);
         height: 34%;
         display: flex;
         flex-direction: column;
@@ -265,20 +277,25 @@ body {
 
             > div {
               height: 88%;
-              width: 33%;
+              width: 31%;
               background: $gradient-1*0.3;
               // background: $dark-blue;
               margin: 0 auto;
               border-radius: 30px;
               line-height: 13px;
               color: $gradient-1;
+              text-align: center;
             }
           }
 
           .previous-record {
             float: right;
-            font-size: 12px;
+            font-size: 10px;
             line-height: 13px;
+            margin-right: 19px;
+            color: $gradient-1 * 1.5;
+            font-weight: 300;
+            text-align: right;
           }
         }
 
@@ -293,6 +310,14 @@ body {
 
         #history-text {
           margin-right: 20px;
+
+          #num {
+            color: white;
+          }
+
+          #operator {
+            color: $sand;
+          }
         }
       }
 
@@ -310,8 +335,9 @@ body {
             font-size: 11px;
             transition-timing-function: ease;
             transition: background-color 1s;
-            border: 1px solid $left-button-hover;
+            border: 1px solid $left-button*1.35;
             position: relative;
+            cursor: pointer;
 
             > div {
               height: 43%;
@@ -330,7 +356,7 @@ body {
           }
 
           > div:hover {
-            background-color: $left-button-hover;
+            background-color: $left-button*1.35;
           }
 
           .operator {
@@ -340,7 +366,10 @@ body {
           .sexy-button-equal {
             width: 50%;
             background-color: $sand;
-            line-height: 47px;
+          }
+
+          .sexy-button-equal:hover {
+            background-color: $sand*1.3;
           }
         }      
       }
@@ -358,7 +387,10 @@ body {
 
 .nerdy {
   background-color: $right-bg;
-  font-family: 'Orbitron', sans-serif;
+  // font-family: 'Heebo', sans-serif;
+  // font-family: 'Orbitron', sans-serif;
+  font-family: 'Aldrich', sans-serif;
+  // font-family: 'Jura', sans-serif;
   padding: 0px;
   display: flex;
   justify-content: center;
@@ -401,7 +433,11 @@ body {
         border-radius: 4px;
         color: $right-button-2;
         text-align: right;
-        line-height: 45px;
+        line-height: 51px;
+        padding: 0px 10px;
+        font-family: 'Aldrich', sans-serif;
+        font-weight: 700;
+        font-size: 24px;
       }
     }
     
@@ -470,10 +506,17 @@ body {
 
           text-align: center;
           vertical-align: middle;
-          line-height: 47px;
+          line-height: 50px;
 
-          font-size: 12px;
-          border-radius: 5px;
+          font-size: 12.5px;
+          font-weight: 500;
+          @include border-radius(5px);
+          cursor: pointer;
+        }
+
+        > div:active {
+          background: $right-button-2*0.85;
+          transform: translateY(3px);
         }
 
         .nerdy-button-2 {
@@ -481,8 +524,18 @@ body {
           color: $right-calc-bg;
         }
 
+        .nerdy-button-2:active {
+          background: $right-button-1*0.8;
+          transform: translateY(3px);
+        }
+
         .nerdy-button-3 {
           background-color: $salmon;
+        }
+
+        .nerdy-button-3:active {
+          background: $salmon*0.8;
+          transform: translateY(3px);
         }
         
       }

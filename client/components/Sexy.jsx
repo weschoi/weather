@@ -3,7 +3,7 @@ import roundTo from 'round-to';
 // const roundTo = require('round-to');
 
 
-class Sexy extends React.Component {
+export default class Sexy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -55,21 +55,36 @@ class Sexy extends React.Component {
     }
   }
 
-  componentWillMount() {
+  handleClearResults() {
+    this.setState({result: '', results: []});
+  }
+
+  setTime() {
     let date = new Date();
     let hour = date.getHours();
     let minute = date.getMinutes();
     let morningOrNight = 'AM';
 
     if (hour > 11) morningOrNight = 'PM';
-    if (hour === 0) {
-      hour = 12;
-    } else if (hour > 12) {
-      hour -= 12;
-    }
+    if (hour === 0) hour = 12;
+    if (hour > 12) hour -= 12;
     if (minute < 10 && minute > 0) minute = '0' + minute;
 
     this.setState({time: `${hour}:${minute} ${morningOrNight}`});
+  }
+
+  componentWillMount() {
+    this.setTime();
+  }
+
+  componentDidMount() {
+    window.setInterval(function() {
+      this.setTime();
+    }.bind(this), 1000);
+  }
+
+  handleRecord() {
+    return this.state.record.split(' ');
   }
 
   render() {
@@ -82,11 +97,6 @@ class Sexy extends React.Component {
             <div className="long-rectangle"></div>
             <div className="short-rectangle"></div>
           </div>
-
-
-
-
-
 
 
 
@@ -120,7 +130,7 @@ class Sexy extends React.Component {
 
               <div className="view-footer">
                 <div className="x">
-                  <div>
+                  <div onClick={() => {this.handleClearResults()}}>
                     x
                   </div>
                 </div>
@@ -137,7 +147,13 @@ class Sexy extends React.Component {
             </div>
 
             <div className="history">
-              <span id="history-text">{this.state.record}</span>
+              <span id="history-text">{this.handleRecord().map((current, index) => {
+                if (index === 0 || index % 2 === 0) {
+                  return <span id="num" key={index}>{`${current} `}</span>
+                } else {
+                  return <span id="operator" key={index}>{`${current} `}</span>
+                }
+              })}</span>
             </div>
 
             <div className='button-group'>
@@ -164,7 +180,7 @@ class Sexy extends React.Component {
                 <div onClick={() => {this.handleClick('4') }}>4</div>
                 <div onClick={() => {this.handleClick('5') }}>5</div>
                 <div onClick={() => {this.handleClick('6') }}>6</div>
-                <div onClick={() => {this.handleClick(' - ') }} className="operator">-</div>
+                <div onClick={() => {this.handleClick(' - ') }} className="operator">–</div>
               </div>
 
               <div>
@@ -198,5 +214,3 @@ class Sexy extends React.Component {
     )
   }
 }
-
-export default Sexy

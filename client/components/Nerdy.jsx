@@ -1,12 +1,13 @@
 import React from 'react';
 
-class Nerdy extends React.Component {
+export default class Nerdy extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       result: '',
       record: '',
       view: '',
+      alignItems: 'flex-start'
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -19,20 +20,41 @@ class Nerdy extends React.Component {
     //   this.setState({view: num});
     // }
 
+    // if (eval(this.state.record) === this.state.result && typeof parseInt(num) === 'number') {
+    //   console.log('inside if');
+    //   this.setState({record: num, result: ''});
+    // } else {
+    //   console.log('inside if else');
+    //   this.setState({record: this.state.record + num});
+    // }
+
     this.setState({record: this.state.record + num});
 
-    console.log('num:', num);
-    console.log('record:', this.state.record);
   }
 
   handleClear() {
-    this.setState({record: ''});
-    console.log('record:', this.state.record);
+    this.setState({record: '', result: ''});
+  }
+
+  handleClickKnob() {
+    if (this.state.alignItems === 'flex-start') {
+      this.setState({alignItems: 'center'})
+    } else if (this.state.alignItems === 'center') {
+      this.setState({alignItems: 'flex-end'});
+    } else {
+      this.setState({alignItems: 'flex-start'});
+    }
+  }
+
+  handleSquareRoot(record) {
+    console.log('square root!');
+    this.setState({record: '', result: Math.sqrt(eval(this.state.record))})
   }
 
   handleEnter() {
 
-    console.log(eval(this.state.record));
+    this.setState({result: eval(this.state.record)})
+    // console.log(eval(this.state.record));
 
     // this.setState({result: eval(this.state.record), view: ''});
   }
@@ -91,8 +113,8 @@ class Nerdy extends React.Component {
                 </svg>
               </div>
 
-              <div className="switch-container">
-                <div className="knob">
+              <div className="switch-container" style={{alignItems: this.state.alignItems}} onClick={() => {this.handleClickKnob() }}>
+                <div className="knob" onClick={() => {this.handleClickKnob() }}>
                 </div>
               </div>
 
@@ -110,7 +132,7 @@ class Nerdy extends React.Component {
             </div>
 
             <div>
-              <div>S</div>
+              <div onClick={() => {this.handleSquareRoot() }}>√</div>
               <div className="nerdy-button-2" onClick={() => {this.handleClick('7') }}>7</div>
               <div className="nerdy-button-2" onClick={() => {this.handleClick('8') }}>8</div>
               <div className="nerdy-button-2" onClick={() => {this.handleClick('9') }}>9</div>
@@ -147,5 +169,3 @@ class Nerdy extends React.Component {
     )
   }
 }
-
-export default Nerdy
