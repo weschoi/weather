@@ -1,8 +1,5 @@
-@import url("https://fonts.googleapis.com/css?family=Orbitron:400,500,700,900");
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
-@import url("https://fonts.googleapis.com/css?family=Heebo:100,300,400,500,700,800,900");
 @import url("https://fonts.googleapis.com/css?family=Aldrich");
-@import url("https://fonts.googleapis.com/css?family=Jura:300,400,500,600,700");
 /* -------------------------------------------------------------------------- */
 /* Sexy Variables
 /* -------------------------------------------------------------------------- */
@@ -56,9 +53,10 @@ body {
       .sexy > div .iphone-section-1 > div {
         background: #a1a5b3; }
       .sexy > div .iphone-section-1 .long-rectangle {
-        width: 40px;
+        width: 50px;
         height: 6px;
         margin: 0 5px;
+        margin-left: 23px;
         -webkit-border-radius: 7px;
         -moz-border-radius: 7px;
         -ms-border-radius: 7px;
@@ -130,7 +128,7 @@ body {
               margin-left: 3px;
               height: 40%;
               width: 50%;
-              background: url("https://i.imgur.com/rWq37Sf.png") no-repeat;
+              background: url("../img/wifi.png") no-repeat;
               background-size: contain; }
           .sexy > div .iphone-section-2 .view .view-header .time, .sexy > div .iphone-section-2 .view .view-header .battery .battery-percent {
             font-size: 7px;
@@ -142,14 +140,14 @@ body {
             .sexy > div .iphone-section-2 .view .view-header .battery .bluetooth-icon {
               height: 44%;
               width: 11%;
-              background: url("https://i.imgur.com/jrCrTCX.png") no-repeat;
+              background: url("../img/bluetooth.png") no-repeat;
               background-size: contain;
               margin-left: 3px;
               opacity: 0.6; }
             .sexy > div .iphone-section-2 .view .view-header .battery .battery-icon {
               height: 44%;
               width: 20%;
-              background: url("https://i.imgur.com/rr9FQUN.png") no-repeat;
+              background: url("../img/battery.png") no-repeat;
               background-size: contain;
               margin-right: 3px; }
         .sexy > div .iphone-section-2 .view .result {
@@ -162,19 +160,6 @@ body {
           .sexy > div .iphone-section-2 .view .view-footer > div {
             height: 100%;
             width: 25%; }
-          .sexy > div .iphone-section-2 .view .view-footer .x {
-            float: left;
-            font-size: 12px;
-            line-height: 0px; }
-            .sexy > div .iphone-section-2 .view .view-footer .x > div {
-              height: 88%;
-              width: 31%;
-              background: #351a49;
-              margin: 0 auto;
-              border-radius: 30px;
-              line-height: 13px;
-              color: #b156f2;
-              text-align: center; }
           .sexy > div .iphone-section-2 .view .view-footer .previous-record {
             float: right;
             font-size: 10px;
@@ -185,16 +170,35 @@ body {
             text-align: right; }
       .sexy > div .iphone-section-2 .history {
         background-color: #17122c;
-        text-align: right;
         height: 8%;
-        line-height: 30px;
-        font-size: 11px; }
-        .sexy > div .iphone-section-2 .history #history-text {
-          margin-right: 20px; }
-          .sexy > div .iphone-section-2 .history #history-text #num {
-            color: white; }
-          .sexy > div .iphone-section-2 .history #history-text #operator {
-            color: #c7aa84; }
+        display: flex; }
+        .sexy > div .iphone-section-2 .history .history-1 {
+          display: flex;
+          flex: 1;
+          align-items: center;
+          justify-content: flex-start; }
+          .sexy > div .iphone-section-2 .history .history-1 span {
+            font-weight: 400;
+            font-size: 9px;
+            line-height: 0px;
+            color: #595959;
+            margin-left: 15px;
+            transition-timing-function: ease;
+            transition: color 0.6s;
+            cursor: pointer; }
+          .sexy > div .iphone-section-2 .history .history-1 span:hover {
+            color: #b3b3b3; }
+        .sexy > div .iphone-section-2 .history .history-2 {
+          flex: 1;
+          text-align: right; }
+          .sexy > div .iphone-section-2 .history .history-2 #history-text {
+            font-size: 11px;
+            line-height: 29px;
+            margin-right: 20px; }
+            .sexy > div .iphone-section-2 .history .history-2 #history-text #num {
+              color: white; }
+            .sexy > div .iphone-section-2 .history .history-2 #history-text #operator {
+              color: #c7aa84; }
       .sexy > div .iphone-section-2 .button-group {
         height: 58%; }
         .sexy > div .iphone-section-2 .button-group > div {
@@ -210,19 +214,6 @@ body {
             border: 1px solid #313a55;
             position: relative;
             cursor: pointer; }
-            .sexy > div .iphone-section-2 .button-group > div > div > div {
-              height: 43%;
-              width: 35%;
-              background: #c7aa84;
-              margin: auto auto;
-              border-radius: 50px;
-              font-weight: 300;
-              line-height: 16px;
-              color: #242b3f;
-              position: absolute;
-              top: 50%;
-              left: 50%;
-              transform: translate(-50%, -50%); }
           .sexy > div .iphone-section-2 .button-group > div > div:hover {
             background-color: #313a55; }
           .sexy > div .iphone-section-2 .button-group > div .operator {
@@ -256,7 +247,7 @@ body {
       width: 80%; }
     .nerdy .nerdy-container .braun {
       height: 18px;
-      background: url("https://i.imgur.com/ijgmCC7.png") no-repeat;
+      background: url("../img/Braun.png") no-repeat;
       background-size: contain; }
     .nerdy .nerdy-container .view-outer {
       height: 14%;

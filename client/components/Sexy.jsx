@@ -1,7 +1,5 @@
 import React from 'react';
 import roundTo from 'round-to';
-// const roundTo = require('round-to');
-
 
 export default class Sexy extends React.Component {
   constructor(props) {
@@ -18,35 +16,49 @@ export default class Sexy extends React.Component {
   }
 
   handleClick(num) {
-    if (num === '-' && this.state.record[this.state.record.length-1] === '-') {
-      this.setState({record: this.state.record.slice(0, this.state.record.length-1) });
-    } else {
-      this.setState({record: this.state.record + num});
+
+    let lastThing = this.state.record[this.state.record.length-2];
+    let length = this.state.record.length;
+    let record = this.state.record;
+
+    if ((num === ' % ' || num === ' / ' || num === ' * ' || num === ' - ' || num === ' + ') && 
+        (lastThing === '%' || lastThing === '/' || lastThing === '*' || lastThing === '-' || lastThing === '+')) {
+      this.setState({record: record.slice(0, length-3) + num})
+    } else if (num === '-' && record[length-1] === '-') {
+      this.setState({record: record.slice(0, length-1) });
+    } else if (num !== '0' && (!record || record[length] !== ' ') ) {
+      this.setState({record: record + num});
     }
   }
 
   handleClear() {
-    this.state.record[this.state.record.length-1] === ' ' ? this.setState({record: this.state.record.slice(0, this.state.record.length-3) }) : this.setState({record: this.state.record.slice(0, this.state.record.length-1) });
+    let length = this.state.record.length;
+    let record = this.state.record;
+
+    record[length-1] === ' ' ? this.setState({record: record.slice(0, length-3) }) : this.setState({record: record.slice(0, length-1) });
   }
 
   handleEnter() {
     let resultNumber = eval(this.state.record);
     let resultString = eval(this.state.record).toString();
+    let length = resultString.length;
 
-    if (resultString.includes('e')) {
-      this.setState({result: resultString.slice(0,4) + resultString.slice(resultString.indexOf('e'), resultString.length)});
-      this.state.result.push(resultString.slice(0,4) + resultString.slice(resultString.indexOf('e'), resultString.length));
+    if (resultNumber === Infinity) {
+      this.setState({result: Infinity});
+    } else if (resultString.includes('e')) {
+      this.setState({result: resultString.slice(0,4) + resultString.slice(resultString.indexOf('e'), length)});
+      this.state.result.push(resultString.slice(0,4) + resultString.slice(resultString.indexOf('e'), length));
     } else if (resultNumber > 99999999) {
-      this.setState({result: `${resultString[0]}.${resultString[1]+resultString[2]}e${(resultString.length-1)}`});
-      this.state.results.push(`${resultString[0]}.${resultString[1]+resultString[2]}e${(resultString.length-1)}`);
+      this.setState({result: `${resultString[0]}.${resultString[1]+resultString[2]}e${(length-1)}`});
+      this.state.results.push(`${resultString[0]}.${resultString[1]+resultString[2]}e${(length-1)}`);
     } else if (resultNumber < .00000001 && resultNumber > 0) {
-      for (let i = 0; i < resultString.length; i++) {
+      for (let i = 0; i < length; i++) {
         if (resultString[i] !== '0' && resultString[i] !== '.') {
           this.setState({result: `${resultString[i]}.${(resultString[i+1] || '0') + (resultString[i+2] || '0')}e-${i}`});
           this.state.results.push(`${resultString[i]}.${(resultString[i+1] || '0') + (resultString[i+2] || '0')}e-${i}`);
         }
       }
-    } else if (resultString.length > 10) {
+    } else if (length > 10) {
       this.setState({result: resultString.slice(0,8)});
       this.state.results.push(resultString.slice(0,8))
     } else {
@@ -56,7 +68,8 @@ export default class Sexy extends React.Component {
   }
 
   handleClearResults() {
-    this.setState({result: '', results: []});
+    this.setState({record: ''});
+    // this.setState({result: '', results: []});
   }
 
   setTime() {
@@ -129,11 +142,6 @@ export default class Sexy extends React.Component {
               </div>
 
               <div className="view-footer">
-                <div className="x">
-                  <div onClick={() => {this.handleClearResults()}}>
-                    x
-                  </div>
-                </div>
                 <div className="previous-record">
                   {this.state.results[this.state.results.length-2] || ''}
                 </div>
@@ -147,25 +155,29 @@ export default class Sexy extends React.Component {
             </div>
 
             <div className="history">
-              <span id="history-text">{this.handleRecord().map((current, index) => {
-                if (index === 0 || index % 2 === 0) {
-                  return <span id="num" key={index}>{`${current} `}</span>
-                } else {
-                  return <span id="operator" key={index}>{`${current} `}</span>
-                }
-              })}</span>
+              <div className="history-1">
+                <span onClick={() => {this.handleClear() }}>delete</span>
+              </div>
+
+              <div className="history-2">
+                <span id="history-text">{
+                  this.handleRecord().map((current, index) => {
+                    if (index === 0 || index % 2 === 0) {
+                      return <span id="num" key={index}>{`${current} `}</span>
+                    } else {
+                      return <span id="operator" key={index}>{`${current} `}</span>
+                    }
+                  })
+                }</span>
+              </div>
             </div>
 
             <div className='button-group'>
 
               <div>
-                <div onClick={() => {this.handleClear() }}>
-                  <div>
-                    C
-                  </div>
-                </div>
+                <div className="operator" style={{fontWeight: 300}}>C</div>
                 <div onClick={() => {this.handleClick('-') }} className="operator">+/-</div>
-                <div className="operator">%</div>
+                <div onClick={() => {this.handleClick(' % ')}} className="operator">%</div>
                 <div onClick={() => {this.handleClick(' / ') }} className="operator">/</div>
               </div>
 
