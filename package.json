@@ -1,5 +1,5 @@
 {
-  "name": "github-fetcher-fullstack-v2",
+  "name": "calculator",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,7 +10,7 @@
     "start": "node server/index.js",
     "sass": "sass --watch dist/css"
   },
-  "author": "Beth Johnson",
+  "author": "Wesley Choi",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
@@ -24,7 +24,6 @@
     "jquery": "^3.2.1",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
-    "round-to": "^2.0.0",
     "webpack": "^3.6.0"
   }
 }
