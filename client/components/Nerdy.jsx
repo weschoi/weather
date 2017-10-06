@@ -7,6 +7,9 @@ export default class Nerdy extends React.Component {
       result: '',
       record: '',
       view: '',
+      show: '',
+      enter: 0,
+      end: false,
       alignItems: 'flex-start'
     }
 
@@ -16,20 +19,26 @@ export default class Nerdy extends React.Component {
 
   handleClick(num) {
 
-    // if (typeof this.state.record[this.state.record[length-1]] !== 'number' && typeof num === 'number') {
-    //   this.setState({view: num});
-    // }
+    let record = this.state.record;
+    let length = record.length;
 
-    // if (eval(this.state.record) === this.state.result && typeof parseInt(num) === 'number') {
-    //   console.log('inside if');
-    //   this.setState({record: num, result: ''});
-    // } else {
-    //   console.log('inside if else');
-    //   this.setState({record: this.state.record + num});
-    // }
-
-    this.setState({record: this.state.record + num});
-
+    if (num === '1' || num === '2' || num === '3' || num === '4' || num === '5' || num === '6' || num === '7' || num === '8' || num === '9' || num === '0') {
+      if (this.state.end) {
+        this.setState({view: num, record: num});
+      } else if (record[length-1] === '+' || record[length-1] === '-' || record[length-1] === '*' || record[length-1] === '/') {
+        this.setState({show: 'number', view: num, record: this.state.record+num});
+      } else {
+        this.setState({show: 'number', view: this.state.view+num, record: this.state.record+num});
+      }
+    } else if (num === '/' || num === '*' || num === '-' || num === '+') {
+      if (this.state.record.length > 2) {
+        this.setState({end: false, show: 'result', result: eval(this.state.record), record: eval(this.state.record) + num, enter: 0})
+      } else {
+        this.setState({end: false, record: this.state.record+num, enter: 0})
+      }
+    } else {
+      this.setState({record: this.state.record+num})
+    }
   }
 
   handleClear() {
@@ -46,21 +55,28 @@ export default class Nerdy extends React.Component {
     }
   }
 
-  handleSquareRoot(record) {
-    console.log('square root!');
-    this.setState({record: '', result: Math.sqrt(eval(this.state.record))})
+  handleSquareRoot() {
+    this.setState({record: Math.sqrt(eval(this.state.record)), result: Math.sqrt(eval(this.state.record))})
   }
 
   handleEnter() {
 
-    this.setState({result: eval(this.state.record)})
-    // console.log(eval(this.state.record));
+    let record = this.state.record;
+    let length = record.length;
 
-    // this.setState({result: eval(this.state.record), view: ''});
+
+    if (!this.state.enter) {
+      this.setState({end: true, show: 'result', result: eval(this.state.record), enter: 1})
+    } else {
+      this.setState({end: true, show: 'result', result: eval(this.state.result + this.state.record.slice(length-2, length))});
+    }
   }
 
 
   render() {
+
+    let view = (this.state.show === 'number') ? this.state.view : this.state.result;
+
     return (
       <div className="col-md-6 nerdy">
         <div className="nerdy-container">
@@ -68,7 +84,7 @@ export default class Nerdy extends React.Component {
           <div className="braun" style={{marginBottom: '13px'}}></div>
 
           <div className="view-outer">
-            <div className="view-inner">{this.state.result || this.state.view}</div>
+            <div className="view-inner">{view}</div>
           </div>
 
           <div className="dots">
@@ -94,11 +110,8 @@ export default class Nerdy extends React.Component {
             </div>
 
             <div className="dots-col-3"></div>
-
             <div className="dots-col-4"></div>
-
             <div className="dots-col-5"></div>
-
             <div className="dots-col-6">
 
               <div className="dot-series">
