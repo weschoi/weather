@@ -1,5 +1,4 @@
 import React from 'react';
-import roundTo from 'round-to';
 
 export default class Sexy extends React.Component {
   constructor(props) {
