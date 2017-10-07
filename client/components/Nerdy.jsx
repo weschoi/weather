@@ -19,6 +19,7 @@ export default class Nerdy extends React.Component {
 
   handleClick(num) {
 
+
     let record = this.state.record;
     let length = record.length;
 
