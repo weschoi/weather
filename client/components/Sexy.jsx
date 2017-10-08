@@ -15,7 +15,6 @@ export default class Sexy extends React.Component {
   }
 
   handleClick(num) {
-
     let lastThing = this.state.record[this.state.record.length-2];
     let length = this.state.record.length;
     let record = this.state.record;
@@ -68,7 +67,6 @@ export default class Sexy extends React.Component {
 
   handleClearResults() {
     this.setState({record: ''});
-    // this.setState({result: '', results: []});
   }
 
   setTime() {
@@ -102,17 +100,11 @@ export default class Sexy extends React.Component {
   render() {
     return (
       <div className="col-md-6 sexy">
-
         <div>
-
           <div className="iphone-section-1">
             <div className="long-rectangle"></div>
             <div className="short-rectangle"></div>
           </div>
-
-
-
-
           <div className="iphone-section-2">
             <div className="view">
               <div className="view-header">
@@ -145,19 +137,12 @@ export default class Sexy extends React.Component {
                   {this.state.results[this.state.results.length-2] || ''}
                 </div>
               </div>
-
-
-
-
-
-
             </div>
 
             <div className="history">
               <div className="history-1">
                 <span onClick={() => {this.handleClear() }}>delete</span>
               </div>
-
               <div className="history-2">
                 <span id="history-text">{
                   this.handleRecord().map((current, index) => {
@@ -170,57 +155,44 @@ export default class Sexy extends React.Component {
                 }</span>
               </div>
             </div>
-
             <div className='button-group'>
-
               <div>
                 <div className="operator" style={{fontWeight: 300}}>C</div>
                 <div onClick={() => {this.handleClick('-') }} className="operator">+/-</div>
                 <div onClick={() => {this.handleClick(' % ')}} className="operator">%</div>
                 <div onClick={() => {this.handleClick(' / ') }} className="operator">/</div>
               </div>
-
               <div>
                 <div onClick={() => {this.handleClick('7') }}>7</div>
                 <div onClick={() => {this.handleClick('8') }}>8</div>
                 <div onClick={() => {this.handleClick('9') }}>9</div>
                 <div onClick={() => {this.handleClick(' * ') }} className="operator">x</div>
               </div>
-
               <div>
                 <div onClick={() => {this.handleClick('4') }}>4</div>
                 <div onClick={() => {this.handleClick('5') }}>5</div>
                 <div onClick={() => {this.handleClick('6') }}>6</div>
                 <div onClick={() => {this.handleClick(' - ') }} className="operator">–</div>
               </div>
-
               <div>
                 <div onClick={() => {this.handleClick('1') }}>1</div>
                 <div onClick={() => {this.handleClick('2') }}>2</div>
                 <div onClick={() => {this.handleClick('3') }}>3</div>
                 <div onClick={() => {this.handleClick(' + ') }} className="operator">+</div>
               </div>
-
               <div>
                 <div onClick={() => {this.handleClick('.') }}>.</div>
                 <div onClick={() => {this.handleClick('0') }}>0</div>
                 <div className="sexy-button-equal" onClick={() => {this.handleEnter()}}>=</div>
               </div>
-
             </div>
           </div>
-
-
-
-
           <div className="iphone-section-3">
               <svg height="28" width="28">
                 <circle cx="14" cy="14" r="12" fill="#dcdfe6" stroke="#a1a5b3" strokeWidth="2" />
               </svg>
           </div>
-
         </div>
-
       </div>
     )
   }
