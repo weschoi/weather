@@ -25,15 +25,16 @@ export default class Nerdy extends React.Component {
 
     if (num === '1' || num === '2' || num === '3' || num === '4' || num === '5' || num === '6' || num === '7' || num === '8' || num === '9' || num === '0') {
       if (this.state.end) {
-        this.setState({view: num, record: num});
+        this.setState({end: false, view: num, record: num});
       } else if (record[length-1] === '+' || record[length-1] === '-' || record[length-1] === '*' || record[length-1] === '/') {
         this.setState({show: 'number', view: num, record: this.state.record+num});
       } else {
         this.setState({show: 'number', view: this.state.view+num, record: this.state.record+num});
       }
     } else if (num === '/' || num === '*' || num === '-' || num === '+') {
-      if (this.state.record.length > 2) {
-        this.setState({end: false, show: 'result', result: eval(this.state.record), record: eval(this.state.record) + num, enter: 0})
+      // if (this.state.record.length > 2) {
+      if (this.state.end) {
+        this.setState({end: false, show: 'result', result: eval(this.state.record).toString().slice(0, 12), record: eval(this.state.record) + num, enter: 0})
       } else {
         this.setState({end: false, record: this.state.record+num, enter: 0})
       }
@@ -43,7 +44,7 @@ export default class Nerdy extends React.Component {
   }
 
   handleClear() {
-    this.setState({record: '', result: ''});
+    this.setState({end: false, record: '', result: '', view: ''});
   }
 
   handleClickKnob() {
@@ -57,19 +58,37 @@ export default class Nerdy extends React.Component {
   }
 
   handleSquareRoot() {
-    this.setState({record: Math.sqrt(eval(this.state.record)), result: Math.sqrt(eval(this.state.record))})
+    let record = this.state.record;
+
+    this.setState({
+      record: Math.sqrt(eval(record)).toString().slice(0, 12), 
+      result: Math.sqrt(eval(record)).toString().slice(0, 12),
+      end: true,
+      show: 'result'
+    });
   }
 
   handleEnter() {
-
     let record = this.state.record;
     let length = record.length;
-
+    let lastOp = '';
 
     if (!this.state.enter) {
-      this.setState({end: true, show: 'result', result: eval(this.state.record), enter: 1})
+      eval(record).toString().length > 12 ? this.setState({result: eval(record).toString().slice(0, 12)}) : this.setState({result: eval(record)})
+
+      this.setState({end: true, show: 'result', enter: 1})
     } else {
-      this.setState({end: true, show: 'result', result: eval(this.state.result + this.state.record.slice(length-2, length))});
+      for (let i = record.length - 1; i > -1; i--) {
+        if (record[i] === '+' || record[i] === '-' || record[i] === '*' || record[i] === '/') {
+          lastOp = record.slice(i, length);
+        }
+      }
+
+      this.setState({
+        end: true, 
+        show: 'result',
+        result: eval(this.state.result+lastOp)
+      });
     }
   }
 
