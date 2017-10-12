@@ -157,7 +157,7 @@ export default class Sexy extends React.Component {
             </div>
             <div className='button-group'>
               <div>
-                <div className="operator" style={{fontWeight: 300}}>C</div>
+                <div className="operator" onClick={() => this.handleClearResults()} style={{fontWeight: 300}}>C</div>
                 <div onClick={() => {this.handleClick('-') }} className="operator">+/-</div>
                 <div onClick={() => {this.handleClick(' % ')}} className="operator">%</div>
                 <div onClick={() => {this.handleClick(' / ') }} className="operator">/</div>
