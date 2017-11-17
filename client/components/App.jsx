@@ -1,5 +1,6 @@
 import React from 'react';
 import $ from 'jquery';
+import dummy from './dummy';
 
 export default class App extends React.Component {
   constructor(props) {
@@ -10,6 +11,7 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
+    console.log('dummy': dummy);
     $.get({
       url: 'http://api.openweathermap.org/data/2.5/weather?q=sanfrancisco&appid=471988b0c33796818cc9ca5568400bbd', (data, status) => {
         console.log('data', data);
