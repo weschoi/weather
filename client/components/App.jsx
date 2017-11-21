@@ -23,11 +23,17 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4887398&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({chicago: data}));
-    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4542692&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({miami: data}));
-    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4900961&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({nyc: data}));
-    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5809844&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({seattle: data}));
-    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5391959&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({sf: data}));
+    // $.get('https://api.apixu.com/v1/current.json?key=165181a757d242c882d50843172111&q=chicago').done(data => console.log(data));
+    // $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=chicago&days=5').done(data => console.log(data));
+
+           // https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=&days=3
+
+
+    $.get('https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?id=4887398&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({chicago: data}));
+    $.get('https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?id=4542692&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({miami: data}));
+    $.get('https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?id=4900961&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({nyc: data}));
+    $.get('https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?id=5809844&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({seattle: data}));
+    $.get('https://crossorigin.me/http://api.openweathermap.org/data/2.5/weather?id=5391959&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({sf: data}));
 
     this.setForecast(4887398, 'chicago');
     this.setForecast(4542692, 'miami');
@@ -90,7 +96,6 @@ export default class App extends React.Component {
     return (
       <div>
         {this.returnCities()}
-        {console.log('sf:', s[s.selectedCity])}
         <h1>{s[s.selectedCity].name}</h1>
         <h1>{s[s.selectedCity].main ? this.convertAndRound(s[s.selectedCity].main.temp) : '90'}</h1>
         <h1>{s[s.selectedCity].weather ? s[s.selectedCity].weather[0].description : 'd'}</h1>
