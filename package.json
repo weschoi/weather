@@ -22,7 +22,6 @@
     "babel-preset-react": "^6.24.1",
     "express": "^4.15.4",
     "jquery": "^3.2.1",
-    "kelvin-to-fahrenheit": "^1.0.0",
     "react": "^15.6.1",
     "react-dom": "^15.6.1",
     "webpack": "^3.6.0"
