@@ -39,6 +39,8 @@ export default class App extends React.Component {
     return state[selectedCity] ? this.getDays().map((day, index) =>
       <div key={index}>
         <h1>{day}</h1>
+        <div id="line"></div>
+        <hr></hr>
         <h1>{state[selectedCity].forecast.forecastday[index+1].day.avgtemp_f}</h1>
       </div>
     ) : ''
@@ -59,11 +61,15 @@ export default class App extends React.Component {
 
     return (
       <div>
-        {this.returnCities()}
-        <h1>{state.selectedCity}</h1>
-        <h1>{state[selectedCity] ? state[selectedCity].current.temp_f : ''}</h1>
-        <h1>{state[selectedCity] ? state[selectedCity].current.condition.text : ''}</h1>
-        {this.getForecast()}
+        <div>{this.returnCities()}</div>
+        <div>
+          <h1>{state[selectedCity] ? state[selectedCity].current.temp_f : ''}</h1>
+          <h1>{state[selectedCity] ? state[selectedCity].current.condition.text : ''}</h1>
+        </div>
+        <div>
+          <h1>Forecast</h1>
+          {this.getForecast()}
+        </div>
       </div>
     )
   }
