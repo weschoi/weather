@@ -23,11 +23,11 @@ export default class App extends React.Component {
   }
 
   componentWillMount() {
-    $.get('http://api.openweathermap.org/data/2.5/weather?id=4887398&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({chicago: data}));
-    $.get('http://api.openweathermap.org/data/2.5/weather?id=4542692&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({miami: data}));
-    $.get('http://api.openweathermap.org/data/2.5/weather?id=4900961&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({nyc: data}));
-    $.get('http://api.openweathermap.org/data/2.5/weather?id=5809844&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({seattle: data}));
-    $.get('http://api.openweathermap.org/data/2.5/weather?id=5391959&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({sf: data}));
+    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4887398&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({chicago: data}));
+    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4542692&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({miami: data}));
+    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=4900961&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({nyc: data}));
+    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5809844&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({seattle: data}));
+    $.get('https://cors-anywhere.herokuapp.com/http://api.openweathermap.org/data/2.5/weather?id=5391959&appid=471988b0c33796818cc9ca5568400bbd').done(data => this.setState({sf: data}));
 
     this.setForecast(4887398, 'chicago');
     this.setForecast(4542692, 'miami');
