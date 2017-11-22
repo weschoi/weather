@@ -8,7 +8,7 @@ html, body {
   height: 100%;
   padding: 0; }
   .container-fluid > div {
-    background-image: linear-gradient(180deg, #21103d 0%, #2f2f63 100%);
+    background-image: linear-gradient(180deg, #21103d 0%, #2f2f63 50%, #2f2f63 100%);
     display: -webkit-flex;
     /* Safari */
     display: flex;
