@@ -1,5 +1,11 @@
-$gray: #f4f4f4;
-$yellow: #ffd300;
+$night-1: #21103d;
+$night-2: #2f2f63;
+
+$afternoon-1: #85657a;
+$afternoon-2: #e39aad;
+
+$evening-1: #6dbcc9;
+$evening-2: #fddda0;
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
@@ -8,62 +14,131 @@ $yellow: #ffd300;
   border-radius: $radius;
 }
 
-* {
-  // border: 2px solid red;
-}
-
-#app {
+@mixin display() {
+  display: -webkit-flex; /* Safari */
   display: flex;
-  justify-content: center;
-  align-items: center;
+}
+
+@mixin gradient($degree, $gradient-1, $gradient-2) {
+  background: -webkit-linear-gradient($gradient-1, $gradient-2); /* For Safari 5.1 to 6.0 */
+  background: -o-linear-gradient($gradient-1, $gradient-2); /* For Opera 11.1 to 12.0 */
+  background: -moz-linear-gradient($gradient-1, $gradient-2); /* For Firefox 3.6 to 15 */
+  background: linear-gradient($degree, $gradient-1, $gradient-2); /* Standard syntax */
+}
+
+* {
+  box-sizing: border-box;
+  // border: 1px solid red;
+}
+
+html, body {
+  height: 100%;
+}
+
+body {
 
 }
 
-.row {
+.container-fluid {
+  height: 100%;
+  padding: 0;
 
   > div {
+    // @include gradient(down, $gradient-1, $gradient-2);
 
-    :first-child {
-      justify-content: space-between;
-      display: flex;
-      flex-direction: row;
+    background-image: linear-gradient(180deg, $night-1 0%, $night-2 100%);
 
-      h1 {
-        font-size: 16px;
-      }
-      
-    }
+    @include display();
+    width: 100%;
+    height: 100%;
 
-    :last-child {
-      display: flex;
+    .row {
+      height: 100%;
+      width: 100%;
+      // background-image: linear-gradient(down, $night-1, $night-2), url('../img/3.png') center center no-repeat;
+
+      // background: url('../img/3.png') no-repeat center;
+
+      // background-image: url('../img/3.png'), linear-gradient(#eb01a5, #d13531); /* W3C */
+      // background-image: url('../img/3.png'), linear-gradient($night-1, $night-2); /* W3C */
+
+
+      // background: linear-gradient(0deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../img/3.png') center center no-repeat;
+
+
+      // background: linear-gradient(0deg, #31253b 0%, #31253b 100%), url('../img/3.png') center center no-repeat;
+
+
+      background: linear-gradient(0deg, rgba(49, 37, 59, 1), rgba(49, 37, 59, 0)), url('../img/3.png') center center no-repeat;
+
+
+      background-size: cover;
 
       > div {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        flex: 1;
-
-        h1 {
-          font-size: 12px;
-        }
-      }
-      
-      > div {
-        display: flex;
+        @include display();
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        height: 80%;
+
+        color: white;
+
+        > div {
+          @include display();
+          width: 100%;
+        }
+
+        > :first-child {
+          justify-content: center;
+          height: 5%;
+
+          > div {
+            @include display();
+            align-items: center;
+            font-size: 10px;
+            margin: 0px 13px;
+          }
+        }
+
+        > :nth-child(2) {
+          justify-content: center;
+          flex-direction: column;
+          align-items: center;
+          height: 75%;
+
+            > :first-child {
+              margin: 0;
+              font-size: 140px;
+              font-weight: 100;
+            }
+
+            > :nth-child(2) {
+              margin: 0;
+              font-size: 15px;
+              margin-bottom: 90px;
+            }
+        }
+
+        > :last-child {
+          height: 20%;
+
+          > div {
+            @include display();
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            flex: 1;
+
+            h1 {
+              font-size: 12px;
+              margin: 0;
+            }
+          }
+        }
       }
-      
     }
 
   }
-}
 
 
-#line {
-  border: none;
-  color: black;
-  background-color:black;
-  height:1px;
 }
+
