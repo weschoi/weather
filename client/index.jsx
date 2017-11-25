@@ -34,7 +34,7 @@ class App extends React.Component {
 
   getDays() {
     let date = new Date().getDay();
-    let days = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday', 'monday', 'tuesday', 'wednesday', 'thursday'];
+    let days = ['sun', 'mon', 'tues', 'wed', 'thur', 'fri', 'sat', 'sun', 'mon', 'tues', 'wed', 'thur'];
 
     return days.slice(date+1, date+6)
   }
@@ -43,14 +43,36 @@ class App extends React.Component {
 
     let state = this.state;
     let selectedCity = state.selectedCity;
+    let img;
 
-    return state[selectedCity] ? this.getDays().map((day, index) =>
-      <div key={index}>
-        <h1>{day}</h1>
-        <h1>{Math.round(state[selectedCity].forecast.forecastday[index+1].day.avgtemp_f)}</h1>
-      </div>
-    ) : ''
-    
+    return state[selectedCity] ? this.getDays().map((day, index) => {
+      return (
+        <div key={index}>
+          <h1>{day}</h1>
+          <img 
+            src={`../img/${this.getIcon(state[selectedCity].forecast.forecastday[index+1].day.condition.text)}`} 
+            height="25" 
+            width="25" 
+            style={{margin: '3px 0px', opacity: '0.5'}}>
+          </img>
+          <h1>{Math.round(state[selectedCity].forecast.forecastday[index+1].day.avgtemp_f)}</h1>
+        </div>
+      )
+    }) : ''
+  }
+
+  getIcon(condition, index) {
+    if (condition === 'Partly cloudy') {
+      return 'w-partly.png'
+    } else if (condition === 'Moderate or heavy rain shower') {
+      return 'w-moderate.png'
+    } else if (condition === 'Cloudy') {
+      return 'w-cloudy.png'
+    } else if (condition === 'Patchy rain possible') {
+      return 'w-patchy.png'
+    } else {
+      return 'w-everythingelse.png'
+    }
   }
 
   getTime() {
@@ -155,7 +177,10 @@ class App extends React.Component {
               <h1>{state[selectedCity] ? state[selectedCity].current.condition.text : ''}</h1>
             </div>
             <div>
-              {this.getForecast()}
+              <div>
+                <div>Forecast</div>
+                <div>{this.getForecast()}</div>
+              </div>
             </div>
           </div>
         </div>

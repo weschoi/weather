@@ -54,17 +54,37 @@ html, body {
             font-size: 15px;
             margin-bottom: 90px; }
         .container-fluid > div .row > div > :last-child {
-          height: 20%; }
+          height: 20%;
+          display: -webkit-flex;
+          /* Safari */
+          display: flex;
+          justify-content: center; }
           .container-fluid > div .row > div > :last-child > div {
             display: -webkit-flex;
             /* Safari */
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            flex: 1; }
-            .container-fluid > div .row > div > :last-child > div h1 {
+            height: 100%;
+            width: 70%;
+            flex-direction: column; }
+            .container-fluid > div .row > div > :last-child > div > :first-child {
+              height: 20%;
               font-size: 12px;
-              margin: 0; }
+              border-bottom: 1px solid white; }
+            .container-fluid > div .row > div > :last-child > div > :nth-child(2) {
+              display: -webkit-flex;
+              /* Safari */
+              display: flex;
+              height: 80%; }
+              .container-fluid > div .row > div > :last-child > div > :nth-child(2) > div {
+                display: -webkit-flex;
+                /* Safari */
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                flex: 1; }
+                .container-fluid > div .row > div > :last-child > div > :nth-child(2) > div h1 {
+                  font-size: 12px;
+                  margin: 0; }
 
 /*# sourceMappingURL=index-2.css.map */
