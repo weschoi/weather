@@ -18,7 +18,7 @@ class App extends React.Component {
       gradient1: '',
       gradient2: '',
       mountain: '',
-      mountain2: ''
+      mountain2: '',
     }
   }
 
@@ -43,7 +43,6 @@ class App extends React.Component {
 
     let state = this.state;
     let selectedCity = state.selectedCity;
-    let img;
 
     return state[selectedCity] ? this.getDays().map((day, index) => {
       return (
@@ -64,12 +63,14 @@ class App extends React.Component {
   getIcon(condition, index) {
     if (condition === 'Partly cloudy') {
       return 'w-partly.png'
-    } else if (condition === 'Moderate or heavy rain shower') {
+    } else if (condition === 'Moderate or heavy rain shower' || condition === 'Moderate rain at times') {
       return 'w-moderate.png'
     } else if (condition === 'Cloudy') {
       return 'w-cloudy.png'
     } else if (condition === 'Patchy rain possible') {
       return 'w-patchy.png'
+    } else if (condition === 'Freezing fog' || condition === 'Fog') {
+      return 'w-fog.png'
     } else {
       return 'w-everythingelse.png'
     }
@@ -167,8 +168,21 @@ class App extends React.Component {
     let state = this.state;
     let selectedCity = state.selectedCity;
 
+      // <img 
+        // src='../img/w-partly.png' 
+        // height="25" 
+        // width="25" 
+        // style={{margin: '3px 0px', opacity: '0.5'}} >
+      // </img>
+
     return (
-      <div style={{backgroundImage: `linear-gradient(180deg, ${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`}}>
+      <div style={{
+        backgroundImage: `url('./img/sun.svg'), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`,
+        backgroundRepeat: 'no-repeat, no-repeat',
+        backgroundColor: 'yellow',
+        backgroundSize: '15%, 100%',
+        backgroundPosition: '19% 25%, top'
+      }}>
         <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
           <div className="col-sm-6 col-10">
             <div>{this.returnCities()}</div>

@@ -36,11 +36,15 @@ body {
 
   > div {
 
+    // Background gradient
+
     @include display();
     width: 100%;
     height: 100%;
 
     .row {
+
+      // Mountain + gradient
       height: 100%;
       width: 100%;
       background-size: cover;
