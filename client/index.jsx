@@ -40,7 +40,6 @@ class App extends React.Component {
   }
 
   getForecast() {
-
     let state = this.state;
     let selectedCity = state.selectedCity;
 
@@ -115,39 +114,70 @@ class App extends React.Component {
       }
     }
 
-    let gradient = hour >= 4 && hour <= 11 ? {1: fourAM, 2: noon} : hour >=12 && hour <= 19 ? {1: noon, 2: eightPM} : {1: eightPM, 2: fourAM};
-    let mountainColors = 
+    let midnight = {
+
+    }
+
+    let elevenPM = {
+
+    }
+
+    let gradient = hour >= 4 && hour <= 11 ? {1: fourAM, 2: noon, cutoff: 4} : hour >=12 && hour <= 19 ? {1: noon, 2: eightPM, cutoff: 12} : {1: eightPM, 2: fourAM, cutoff: 20};
     this.setState({time: new Date().getHours()});
     this.setGradient(gradient, hour);
   }
 
   setGradient(gradient, hour) {
-
     let one = gradient[1];
     let two = gradient[2];
 
-    let darkR = this.setGradientHelper(one.dark.r, two.dark.r, hour);
-    let darkG = this.setGradientHelper(one.dark.g, two.dark.g, hour);
-    let darkB = this.setGradientHelper(one.dark.b, two.dark.b, hour);
+    let bright = {
+      r: 251, g: 246, b: 216
+    }
 
-    let lightR = this.setGradientHelper(one.light.r, two.light.r, hour);
-    let lightG = this.setGradientHelper(one.light.g, two.light.g, hour);
-    let lightB = this.setGradientHelper(one.light.b, two.light.b, hour);
+    let sunset = {
+      r: 253, g: 124, b: 119
+    }
 
-    let mountainR = this.setGradientHelper(one.mountain.r, two.mountain.r, hour);
-    let mountainG = this.setGradientHelper(one.mountain.g, two.mountain.g, hour);
-    let mountainB = this.setGradientHelper(one.mountain.b, two.mountain.b, hour);
+    let darkR = this.setGradientHelper(one.dark.r, two.dark.r, hour, gradient.cutoff);
+    let darkG = this.setGradientHelper(one.dark.g, two.dark.g, hour, gradient.cutoff);
+    let darkB = this.setGradientHelper(one.dark.b, two.dark.b, hour, gradient.cutoff);
+
+    let lightR = this.setGradientHelper(one.light.r, two.light.r, hour, gradient.cutoff);
+    let lightG = this.setGradientHelper(one.light.g, two.light.g, hour, gradient.cutoff);
+    let lightB = this.setGradientHelper(one.light.b, two.light.b, hour, gradient.cutoff);
+
+    let mountainR = this.setGradientHelper(one.mountain.r, two.mountain.r, hour, gradient.cutoff);
+    let mountainG = this.setGradientHelper(one.mountain.g, two.mountain.g, hour, gradient.cutoff);
+    let mountainB = this.setGradientHelper(one.mountain.b, two.mountain.b, hour, gradient.cutoff);
+
+    let sunR = this.getSunColors(bright.r, sunset.r, hour);
+    let sunG = this.getSunColors(bright.g, sunset.g, hour);
+    let sunB = this.getSunColors(bright.b, sunset.b, hour);
 
     this.setState({
       gradient1: `rgb(${darkR}, ${darkG}, ${darkB})`, 
       gradient2: `rgb(${lightR}, ${lightG}, ${lightB})`, 
       mountain1: `rgba(${mountainR}, ${mountainG}, ${mountainB}, 0)`,
-      mountain2: `rgba(${mountainR}, ${mountainG}, ${mountainB}, 1)`
+      mountain2: `rgba(${mountainR}, ${mountainG}, ${mountainB}, 1)`,
+      sun: `rgb(${sunR}, ${sunG}, ${sunB})`
     })
   }
 
-  setGradientHelper(num1, num2, hour) {
-    return Math.round(num1 + ((num2 - num1)/8) * (hour - 12));
+  setGradientHelper(num1, num2, hour, cutoff) {
+    let newHour = hour;
+    if (hour >= 0 && hour <= 3) newHour += (23 + hour);
+    return Math.round(num1 + ((num2 - num1)/8) * (newHour - cutoff));
+  }
+
+  getSunColors(bright, sunset, hour) {
+    if (hour >= 7 && hour <= 12) {
+      return Math.round(bright - ((sunset - bright)/6) * (hour - 7))
+    } else if (hour >= 13 && hour <= 18) {
+      return Math.round(bright + ((sunset - bright)/6) * (hour - 13))
+    } else {
+      return 0
+    }
   }
 
   returnCities() {
@@ -167,22 +197,26 @@ class App extends React.Component {
   render() {
     let state = this.state;
     let selectedCity = state.selectedCity;
+    var style = {};
 
-      // <img 
-        // src='../img/w-partly.png' 
-        // height="25" 
-        // width="25" 
-        // style={{margin: '3px 0px', opacity: '0.5'}} >
-      // </img>
+    if (state.time >= 7 && state.time <= 18) {
+      style = {
+        backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><circle cx='25' cy='25' r='21' fill='${this.state.sun}' filter='url(#f1)'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`,
+        backgroundRepeat: 'no-repeat, no-repeat',
+        backgroundSize: '15%, 100%',
+        backgroundPosition: '15% 35%, top'
+      }
+    } else {
+      style = {
+        backgroundImage: `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><circle cx='25' cy='25' r='21' fill='${this.state.sun}' filter='url(#f1)'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`,
+        backgroundRepeat: 'no-repeat, no-repeat',
+        backgroundSize: '15%, 100%',
+        backgroundPosition: '15% 35%, top'
+      } 
+    }
 
     return (
-      <div style={{
-        backgroundImage: `url('./img/sun.svg'), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`,
-        backgroundRepeat: 'no-repeat, no-repeat',
-        backgroundColor: 'yellow',
-        backgroundSize: '15%, 100%',
-        backgroundPosition: '19% 25%, top'
-      }}>
+      <div style={style}>
         <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
           <div className="col-sm-6 col-10">
             <div>{this.returnCities()}</div>
