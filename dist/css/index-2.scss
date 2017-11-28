@@ -78,22 +78,26 @@ body {
           justify-content: center;
           flex-direction: column;
           align-items: center;
-          height: 75%;
+          height: 70%;
 
             > :first-child {
               margin: 0;
-              font-size: 140px;
+              font-size: 150px;
               font-weight: 100;
             }
 
             > :nth-child(2) {
               margin: 0;
               font-size: 15px;
-              margin-bottom: 90px;
+              margin-bottom: 75px;
             }
         }
 
         > :last-child {
+          height: 5%;
+        }
+
+        > :nth-child(3) {
           height: 20%;
           @include display();
           justify-content: center;
