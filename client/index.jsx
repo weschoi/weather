@@ -114,14 +114,6 @@ class App extends React.Component {
       }
     }
 
-    let midnight = {
-
-    }
-
-    let elevenPM = {
-
-    }
-
     let gradient = hour >= 4 && hour <= 11 ? {1: fourAM, 2: noon, cutoff: 4} : hour >=12 && hour <= 19 ? {1: noon, 2: eightPM, cutoff: 12} : {1: eightPM, 2: fourAM, cutoff: 20};
     this.setState({time: new Date().getHours()});
     this.setGradient(gradient, hour);

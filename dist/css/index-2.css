@@ -41,8 +41,8 @@ html, body {
             font-size: 10px;
             margin: 0px 13px; }
         .container-fluid > div .row > div > :nth-child(2) {
-          justify-content: center;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
           height: 70%; }
           .container-fluid > div .row > div > :nth-child(2) > :first-child {
@@ -65,9 +65,9 @@ html, body {
             display: -webkit-flex;
             /* Safari */
             display: flex;
+            flex-direction: column;
             height: 100%;
-            width: 70%;
-            flex-direction: column; }
+            width: 70%; }
             .container-fluid > div .row > div > :nth-child(3) > div > :first-child {
               height: 20%;
               font-size: 12px;

@@ -19,15 +19,10 @@
 
 * {
   box-sizing: border-box;
-  // border: 1px solid red;
 }
 
 html, body {
   height: 100%;
-}
-
-body {
-
 }
 
 .container-fluid {
@@ -45,6 +40,7 @@ body {
     .row {
 
       // Mountain + gradient
+
       height: 100%;
       width: 100%;
       background-size: cover;
@@ -54,7 +50,6 @@ body {
         flex-direction: column;
         justify-content: center;
         height: 80%;
-
         color: white;
 
         > div {
@@ -75,8 +70,8 @@ body {
         }
 
         > :nth-child(2) {
-          justify-content: center;
           flex-direction: column;
+          justify-content: center;
           align-items: center;
           height: 70%;
 
@@ -104,9 +99,9 @@ body {
 
           > div {
             @include display();
+            flex-direction: column;
             height: 100%;
             width: 70%;
-            flex-direction: column;
 
             > :first-child {
               height: 20%;
@@ -129,17 +124,11 @@ body {
                   font-size: 12px;
                   margin: 0;
                 }
-                
               }
-
             }
-            
           }
-
-
         }
       }
     }
   }
 }
-
