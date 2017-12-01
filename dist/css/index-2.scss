@@ -1,3 +1,7 @@
+@import "breakpoints";
+@import "functions";
+@import "variables";
+
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;
   -moz-border-radius: $radius;
@@ -19,6 +23,7 @@
 
 * {
   box-sizing: border-box;
+  // border: 2px solid red;
 }
 
 html, body {
@@ -66,6 +71,14 @@ html, body {
             align-items: center;
             font-size: 10px;
             margin: 0px 13px;
+
+            &.showlarge {
+              display: inherit;
+            }
+
+            &.showsmall {
+              display: none;
+            }
           }
         }
 
@@ -132,3 +145,37 @@ html, body {
     }
   }
 }
+
+
+
+// @media (min-width: 768px) {
+//   .show-large {
+//     display: none;
+//   }
+
+//   .show-small {
+//     display: inherit;
+//   }
+// }
+
+
+            // &.showlarge {
+            //   display: inherit;
+            // }
+
+            // &.showsmall {
+            //   display: none;
+
+
+@include media-breakpoint-down(sm) {
+
+  .showlarge {
+    display: none;
+  }
+
+  .showsmall {
+    display: inherit;
+  }
+}
+
+

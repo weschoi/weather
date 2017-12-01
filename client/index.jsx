@@ -11,7 +11,7 @@ class App extends React.Component {
       'new york city': '',
       seattle: '',
       'san francisco': '',
-      cities: ['miami', 'new york city', 'san francisco', 'chicago', 'seattle'],
+      cities: ['miami', 'new york city', 'nyc', 'san francisco', 'chicago', 'seattle'],
       selectedCity: 'san francisco',
       time: '',
       brightness: "",
@@ -177,6 +177,14 @@ class App extends React.Component {
       if (city === this.state.selectedCity) {
         return <div key={index} style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</div>
       } else {
+        if (city === 'new york city') {
+          return <div key={index} className='showlarge' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
+          // return <div><div key={index} className='show-large' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div><div key={index} className='show-small' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{'nyc'}</div></div>
+        } else if (city === 'nyc') {
+          return <div key={index} className='showsmall' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>nyc</div>
+        } else {
+          return <div key={index} style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
+        }
         return <div key={index} style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
       }
     })
@@ -210,7 +218,7 @@ class App extends React.Component {
     return (
       <div style={style}>
         <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
-          <div className="col-sm-6 col-10">
+          <div className="col-11 col-sm-8 col-md-7 col-lg-6">
             <div>{this.returnCities()}</div>
             <div>
               <h1>{state[selectedCity] ? Math.round(state[selectedCity].current.temp_f) : ''}&#176;</h1>
