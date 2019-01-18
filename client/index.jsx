@@ -6,18 +6,16 @@ class App extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      chicago: '',
-      miami: '',
+      moscow: '',
+      london: '',
       'new york city': '',
-      seattle: '',
+      tokyo: '',
       'san francisco': '',
-      cities: ['miami', 'new york city', 'nyc', 'san francisco', 'san fran', 'chicago', 'seattle'],
+      cities: ['london', 'new york city', 'nyc', 'san francisco', 'san fran', 'moscow', 'tokyo'],
       selectedCity: 'san francisco',
       time: '',
-      brightness: '',
       gradient1: '',
       gradient2: '',
-      mountain: '',
       mountain2: '',
       sunOrMoonPosition: ''
     }
@@ -26,10 +24,10 @@ class App extends React.Component {
   componentWillMount() {
     this.getTime();
 
-    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=chicago&days=6').done(data => this.setState({chicago: data}));
-    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=miami&days=6').done(data => this.setState({miami: data}));
+    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=moscow&days=6').done(data => this.setState({moscow: data}));
+    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=london&days=6').done(data => this.setState({london: data}));
     $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=new york city&days=6').done(data => this.setState({'new york city': data}));
-    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=seattle&days=6').done(data => this.setState({seattle: data}));
+    $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=tokyo&days=6').done(data => this.setState({tokyo: data}));
     $.get('https://api.apixu.com/v1/forecast.json?key=165181a757d242c882d50843172111&q=94121&days=6').done(data => this.setState({'san francisco': data}));
   }
 
@@ -40,44 +38,15 @@ class App extends React.Component {
     return days.slice(date+1, date+6)
   }
 
-  getForecast() {
-    let state = this.state;
-    let selectedCity = state.selectedCity;
-
-    return state[selectedCity] ? this.getDays().map((day, index) => {
-      return (
-        <div key={index}>
-          <h1>{day}</h1>
-          <img 
-            src={`../img/${this.getIcon(state[selectedCity].forecast.forecastday[index+1].day.condition.text)}`} 
-            height="25" 
-            width="25" 
-            style={{margin: '3px 0px', opacity: '0.7'}}>
-          </img>
-          <h1>{Math.round(state[selectedCity].forecast.forecastday[index+1].day.avgtemp_f)}</h1>
-        </div>
-      )
-    }) : ''
-  }
-
   getIcon(condition, index) {
-    if (condition === 'Partly cloudy') {
-      return 'w-partly.png'
-    } else if (condition === 'Moderate or heavy rain shower' || condition === 'Moderate rain at times') {
-      return 'w-moderate.png'
-    } else if (condition === 'Cloudy' || condition === 'Overcast') {
-      return 'w-cloudy.png'
-    } else if (condition === 'Patchy rain possible' || condition === 'Light rain' || condition === 'Light rain shower') {
-      return 'w-patchy.png'
-    } else if (condition === 'Freezing fog' || condition === 'Fog') {
-      return 'w-fog.png'
-    } else if (condition === 'Thundery outbreaks possible') {
-      return 'w-thunder.png'
-    } else if (condition === 'Light snow') {
-      return 'w-snow.png'
-    } else {
-      return 'w-everythingelse.png'
-    }
+    if (condition === 'Partly cloudy') return 'w-partly.png';
+    if (condition === 'Moderate or heavy rain shower' || condition === 'Moderate rain at times') return 'w-moderate.png';
+    if (condition === 'Cloudy' || condition === 'Overcast') return 'w-cloudy.png';
+    if (condition === 'Patchy rain possible' || condition === 'Light rain' || condition === 'Light rain shower') return 'w-patchy.png';
+    if (condition === 'Freezing fog' || condition === 'Fog') return 'w-fog.png';
+    if (condition === 'Thundery outbreaks possible') return 'w-thunder.png';
+    if (condition === 'Light snow') return 'w-snow.png';
+    return 'w-everythingelse.png'
   }
 
   getTime(counter) {
@@ -86,6 +55,8 @@ class App extends React.Component {
     if (typeof counter != 'undefined') {
       hour += counter
     }
+
+    this.setState({time: hour});
 
     let fourAM = {
       dark: {
@@ -123,8 +94,16 @@ class App extends React.Component {
       }
     }
 
-    let gradient = hour >= 4 && hour <= 11 ? {1: fourAM, 2: noon, cutoff: 4} : hour >=12 && hour <= 19 ? {1: noon, 2: eightPM, cutoff: 12} : {1: eightPM, 2: fourAM, cutoff: 20};
-    this.setState({time: new Date().getHours()});
+    let gradient;
+
+    if (hour >= 4 && hour <= 11) {
+      gradient = {1: fourAM, 2: noon, cutoff: 4}
+    } else if (hour >=12 && hour <= 19) {
+      gradient = {1: noon, 2: eightPM, cutoff: 12}
+    } else {
+      gradient = {1: eightPM, 2: fourAM, cutoff: 20}
+    };
+
     this.setGradient(gradient, hour);
     this.getSunOrMoonPosition(hour)
   }
@@ -188,31 +167,31 @@ class App extends React.Component {
     return this.state.cities.map((city, index) => {
       if (city === this.state.selectedCity) {
         if (selectedCity === 'san francisco') {
-          return <div key={index} className='showlarge' style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} className='showlarge' style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</span>
         } else if (selectedCity === 'new york city') {
-          return <div key={index} className='showlarge' style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} className='showlarge' style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</span>
         } else {
-          return <div key={index} style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} style={{opacity: '1'}} onClick={() => this.switchCity(city)}>{city}</span>
         }
       } else {
         if (city === 'new york city') {
-          return <div key={index} className='showlarge' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} className='showlarge' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</span>
         } else if (city === 'nyc') {
           if (selectedCity === 'new york city') {
-            return <div key={index} className='showsmall' style={{opacity: '1'}} onClick={() => this.switchCity('new york city')}>nyc</div>
+            return <span key={index} className='showsmall' style={{opacity: '1'}} onClick={() => this.switchCity('new york city')}>nyc</span>
           } else {
-            return <div key={index} className='showsmall' style={{opacity: '0.5'}} onClick={() => this.switchCity('new york city')}>nyc</div>
+            return <span key={index} className='showsmall' style={{opacity: '0.5'}} onClick={() => this.switchCity('new york city')}>nyc</span>
           }
         } else if (city === 'san francisco') {
-          return <div key={index} className='showlarge' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} className='showlarge' style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</span>
         } else if (city === 'san fran') {
           if (selectedCity === 'san francisco') {
-            return <div key={index} className='showsmall' style={{opacity: '1'}} onClick={() => this.switchCity('san francisco')}>san fran</div>
+            return <span key={index} className='showsmall' style={{opacity: '1'}} onClick={() => this.switchCity('san francisco')}>san fran</span>
           } else {
-            return <div key={index} className='showsmall' style={{opacity: '0.5'}} onClick={() => this.switchCity('san francisco')}>san fran</div>
+            return <span key={index} className='showsmall' style={{opacity: '0.5'}} onClick={() => this.switchCity('san francisco')}>san fran</span>
           }
         } else {
-          return <div key={index} style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</div>
+          return <span key={index} style={{opacity: '0.5'}} onClick={() => this.switchCity(city)}>{city}</span>
         }
       }
     })
@@ -221,12 +200,16 @@ class App extends React.Component {
   switchCity(city) {
     this.setState({selectedCity: city});
 
-    if (city === 'miami' || city === 'new york city') {
+    if (city === 'new york city') {
       this.getTime(3);
-    } else if (city === 'san francisco' || city === 'seattle') {
+    } else if (city === 'tokyo') {
+      this.getTime(17);
+    }else if (city === 'london') {
+      this.getTime(8);
+    } else if (city === 'san francisco') {
       this.getTime(0);
-    } else if (city === 'chicago') {
-      this.getTime(2);
+    } else if (city === 'moscow') {
+      this.getTime(11);
     }
   }
 
@@ -249,6 +232,26 @@ class App extends React.Component {
     } else {
       this.setState({sunOrMoonPosition: Math.round(8 * (23 - hour)) + '%'})
     }
+  }
+
+  getForecast() {
+    let state = this.state;
+    let selectedCity = state.selectedCity;
+
+    return state[selectedCity] ? this.getDays().map((day, index) => {
+      return (
+        <div key={index}>
+          <h1>{day}</h1>
+          <img 
+            src={`../img/${this.getIcon(state[selectedCity].forecast.forecastday[index+1].day.condition.text)}`} 
+            height="25" 
+            width="25" 
+            style={{margin: '3px 0px', opacity: '0.7'}}>
+          </img>
+          <h1>{Math.round(state[selectedCity].forecast.forecastday[index+1].day.avgtemp_f)}</h1>
+        </div>
+      )
+    }) : ''
   }
 
   render() {
@@ -277,19 +280,20 @@ class App extends React.Component {
       <div style={style}>
         <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
           <div className="col-11 col-sm-8 col-md-7 col-lg-6">
-            <div>{this.returnCities()}</div>
-            <div>
+            <header>{this.returnCities()}</header>
+
+            <section>
               <h1>{state[selectedCity] ? Math.round(state[selectedCity].current.temp_f) : ''}&#176;</h1>
               <h1>{state[selectedCity] ? state[selectedCity].current.condition.text : ''}</h1>
-            </div>
-            <div>
-              <div>
-                <div>Forecast</div>
-                <div>{this.getForecast()}</div>
-              </div>
-            </div>
-          <div>
-          </div>
+            </section>
+
+            <footer>
+              <span>Forecast</span>
+              <div>{this.getForecast()}</div>
+            </footer>
+
+          <div></div>
+
           </div>
         </div>
       </div>

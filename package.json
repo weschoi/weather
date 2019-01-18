@@ -5,25 +5,22 @@
   "main": "index.js",
   "scripts": {
     "heroku-postbuild": "webpack -p",
+    "start": "nodemon server/index.js",
     "build": "webpack -d --watch",
-    "nodemon": "nodemon server/index.js",
-    "start": "node server/index.js",
-    "sass": "sass --watch dist/css"
+    "sass": "node-sass -o dist/css dist/css/scss -w"
   },
   "author": "Wesley Choi",
   "license": "ISC",
   "devDependencies": {},
   "dependencies": {
-    "ajax": "0.0.4",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.5",
     "babel-preset-env": "^1.7.0",
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.24.1",
-    "bootstrap": "^4.1.3",
     "express": "^4.16.4",
     "jquery": "^3.3.1",
-    "popper.js": "^1.14.4",
+    "nodemon": "^1.18.9",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "webpack": "^3.12.0"

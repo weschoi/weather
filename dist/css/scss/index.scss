@@ -1,0 +1,124 @@
+@import "breakpoints";
+@import "functions";
+@import "variables";
+@import "mixins";
+
+html, body {
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+}
+
+.container-fluid {
+  @include w_h(100%, 100%);
+  padding: 0px;
+
+  > div {
+    @include flex-display(row, center, center, 100%, 100%);
+
+    .row {
+      @include w_h(100%, 100%);
+      background-size: cover;
+
+      > div {
+        @include display(column, center, center);
+        height: 80%;
+        color: white;
+
+        > div {
+          @include display(column, center, center);
+          width: 100%;
+        }
+
+        header {
+          @include flex-display(row, center, center, 100%, 5%);
+
+          span {
+            font-size: 10px;
+            margin: 0px 13px;
+          }
+
+          .showlarge {
+            display: none;
+          }
+
+          .showsmall {
+            display: block;
+          }
+        }
+
+        > section {
+          @include flex-display(column, center, center, 100%, 70%);
+
+            > :first-child {
+              font-size: 150px;
+              font-weight: 100;
+            }
+
+            > :nth-child(2) {
+              font-size: 15px;
+              margin-bottom: 75px;
+            }
+        }
+
+        > :last-child {
+          height: 5%;
+        }
+
+        footer {
+          @include flex-display(column, center, center, 100%, 20%);
+
+          span {
+            @include w_h(65%, 20%);
+            min-width: 220px;
+            font-size: 12px;
+            border-bottom: 1px solid white;
+          }
+
+          > div {
+            @include flex-display(row, center, center, 100%, 70%);
+
+            > div {
+              @include flex-display(column, center, center, 12%, 100%);
+
+              h1 {
+                font-size: 11px;
+                margin: 3px;
+                font-weight: 200;
+              }
+            }
+          }
+
+        }
+      }
+    }
+  }
+}
+
+@include media-breakpoint-up(sm) {
+
+  .container-fluid {
+    > div {
+      .row {
+        // column
+        > div {
+          // everything in column
+          > div {
+          }
+          // cities list
+          > :first-child {
+            > div {
+            }
+            // city name
+            .showlarge {
+              display: block;
+            }
+            .showsmall {
+              display: none;
+            }
+          }
+        }
+      }
+    }
+  }
+}

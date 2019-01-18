@@ -1,0 +1,41 @@
+@mixin border-radius($radius) {
+    -webkit-border-radius: $radius;
+    -moz-border-radius: $radius;
+    -ms-border-radius: $radius;
+    border-radius: $radius;
+}
+  
+@mixin gradient($degree, $gradient-1, $gradient-2) {
+    background: -webkit-linear-gradient($gradient-1, $gradient-2); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient($gradient-1, $gradient-2); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient($gradient-1, $gradient-2); /* For Firefox 3.6 to 15 */
+    background: linear-gradient($degree, $gradient-1, $gradient-2); /* Standard syntax */
+}
+  
+@mixin display($direction, $x, $y) {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: $direction;
+    align-items: $x;
+    justify-content: $y;
+}
+  
+@mixin flex-display($direction, $x, $y, $width, $height) {
+    display: -webkit-flex;
+    display: flex;
+    flex-direction: $direction;
+    justify-content: $x;
+    align-items: $y;
+    @include w_h($width, $height);
+}
+  
+@mixin w_h($width, $height) {
+    width: $width;
+    height: $height;
+}
+
+@mixin HelveticaNeue($weight, $size, $color) {
+    font-weight: $weight;
+    font-size: $size;
+    color: $color;
+}
