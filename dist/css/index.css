@@ -44,7 +44,8 @@ html, body {
           height: 5%; }
           .container-fluid > div .row > div header span {
             font-size: 10px;
-            margin: 0px 13px; }
+            margin: 0px 13px;
+            cursor: pointer; }
           .container-fluid > div .row > div header .showlarge {
             display: none; }
           .container-fluid > div .row > div header .showsmall {
