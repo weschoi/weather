@@ -207,6 +207,8 @@ class App extends React.Component {
     if (city === 'moscow') this.getTime(11);
   }
 
+  
+
   getSunOrMoonPosition(hour) {
 
     if (hour < 0) {
@@ -251,22 +253,62 @@ class App extends React.Component {
   render() {
     let state = this.state;
     let selectedCity = state.selectedCity;
-    let style = {
-      backgroundRepeat: 'no-repeat, no-repeat',
-      backgroundSize: '15%, 100%'
-    };
+    // let style = {
+    //   backgroundRepeat: 'no-repeat, no-repeat',
+    //   backgroundSize: '15%, 100%'
+    // };
 
-    if (state.time >= 7 && state.time <= 18) {
-      style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><circle cx='25' cy='25' r='21' fill='${this.state.sun}' filter='url(#f1)'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      style.backgroundPosition = `15% ${this.state.sunOrMoonPosition}, top`;
+    var style;
+    var style2;
+
+    // if (state.time >= 7 && state.time <= 18) {
+    //   style.backgroundImage = 
+    //     `url("data:image/svg+xml;utf8,
+    //       <svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'>
+    //         <filter id='f1'>
+    //           <feGaussianBlur in='SourceGraphic' stdDeviation='1' />
+    //         </filter>
+    //         <circle cx='25' cy='25' r='21' fill='${this.state.sun}' filter='url(#f1)'/>
+    //       </svg>"
+    //     ), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+
+    //   style.backgroundPosition = `15% ${this.state.sunOrMoonPosition}, top`;
+    // } else {
+    //   style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='141.7 -5 57 57'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><path d='M170.6 0.5c-11.2-2.2-22.4 3.4-27.4 13.6 3.3-4.4 8.6-7.3 14.6-7.3 7.9 0 14.6 5 17.1 12 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.5 0.2 0.8 0.1 0.3 0.1 0.5 0.2 0.8 0.1 0.2 0.1 0.5 0.2 0.7 0.1 0.3 0.1 0.7 0.2 1.1 0 0.2 0.1 0.4 0.1 0.6 0.1 0.6 0.1 1.1 0.1 1.7 0 0.5 0 1.1-0.1 1.6l0 0c-0.8 9.3-8.6 16.6-18.2 16.6 -6 0-11.2-2.9-14.6-7.3 4.9 10.2 16.2 15.8 27.4 13.6 11.7-2.3 20.1-12.6 20.1-24.5C190.7 13.1 182.3 2.8 170.6 0.5z' filter='url(#f1)' fill='#FFF'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+    //   style.backgroundPosition = `82% ${this.state.sunOrMoonPosition}, top`;
+    // }
+
+    if (this.state.time >= 7 && this.state.time <= 18) {
+      style = 
+        `url("data:image/svg+xml;utf8,
+          <svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='0 0 50 50'>
+            <filter id='f1'>
+              <feGaussianBlur in='SourceGraphic' stdDeviation='1' />
+            </filter>
+            <circle cx='25' cy='25' r='21' fill='${this.state.sun}' filter='url(#f1)'/>
+          </svg>"
+        ), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+
+      style2 = `15% ${this.state.sunOrMoonPosition}, top`;
     } else {
-      style.backgroundImage = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='141.7 -5 57 57'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><path d='M170.6 0.5c-11.2-2.2-22.4 3.4-27.4 13.6 3.3-4.4 8.6-7.3 14.6-7.3 7.9 0 14.6 5 17.1 12 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.5 0.2 0.8 0.1 0.3 0.1 0.5 0.2 0.8 0.1 0.2 0.1 0.5 0.2 0.7 0.1 0.3 0.1 0.7 0.2 1.1 0 0.2 0.1 0.4 0.1 0.6 0.1 0.6 0.1 1.1 0.1 1.7 0 0.5 0 1.1-0.1 1.6l0 0c-0.8 9.3-8.6 16.6-18.2 16.6 -6 0-11.2-2.9-14.6-7.3 4.9 10.2 16.2 15.8 27.4 13.6 11.7-2.3 20.1-12.6 20.1-24.5C190.7 13.1 182.3 2.8 170.6 0.5z' filter='url(#f1)' fill='#FFF'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      style.backgroundPosition = `82% ${this.state.sunOrMoonPosition}, top`;
+      style = `url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='50' height='50' viewBox='141.7 -5 57 57'><filter id='f1'><feGaussianBlur in='SourceGraphic' stdDeviation='1' /></filter><path d='M170.6 0.5c-11.2-2.2-22.4 3.4-27.4 13.6 3.3-4.4 8.6-7.3 14.6-7.3 7.9 0 14.6 5 17.1 12 0.1 0.2 0.1 0.4 0.2 0.5 0.1 0.3 0.2 0.5 0.2 0.8 0.1 0.3 0.1 0.5 0.2 0.8 0.1 0.2 0.1 0.5 0.2 0.7 0.1 0.3 0.1 0.7 0.2 1.1 0 0.2 0.1 0.4 0.1 0.6 0.1 0.6 0.1 1.1 0.1 1.7 0 0.5 0 1.1-0.1 1.6l0 0c-0.8 9.3-8.6 16.6-18.2 16.6 -6 0-11.2-2.9-14.6-7.3 4.9 10.2 16.2 15.8 27.4 13.6 11.7-2.3 20.1-12.6 20.1-24.5C190.7 13.1 182.3 2.8 170.6 0.5z' filter='url(#f1)' fill='#FFF'/></svg>"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+      style2 = `82% ${this.state.sunOrMoonPosition}, top`;
     }
 
     return (
-      <div style={style}>
-        <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
+      // <div style={style}>
+      <div style={{
+        backgroundImage: style,
+        backgroundPosition: style2,
+        backgroundSize: '15%, 100%',
+        backgroundRepeat: 'no-repeat, no-repeat'
+      }}>
+        <div
+          className="row no-gutters justify-content-center align-items-center" 
+          style={{
+            background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`
+          }}
+        >
           <div className="col-11 col-sm-8 col-md-7 col-lg-6">
             <header>{this.returnCities()}</header>
 
