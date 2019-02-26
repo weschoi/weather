@@ -54,7 +54,7 @@ html, body {
         }
 
         > section {
-          @include flex-display(column, center, center, 100%, 70%);
+          @include flex-display(column, center, center, 100%, 73%);
 
             > :first-child {
               font-size: 150px;
@@ -63,12 +63,12 @@ html, body {
 
             > :nth-child(2) {
               font-size: 17px;
-              margin-bottom: 75px;
+              margin-bottom: 65px;
             }
         }
 
         footer {
-          @include flex-display(column, center, center, 100%, 25%);
+          @include flex-display(column, center, center, 100%, 22%);
 
           span {
             @include w_h(65%, 20%);

@@ -201,7 +201,7 @@ class App extends React.Component {
     this.setState({selectedCity: city});
 
     if (city === 'new york city') this.getTime(3);
-    if (city === 'tokyo') this.getTime(17);
+    if (city === 'tokyo') this.getTime(-6);
     if (city === 'london') this.getTime(8);
     if (city === 'san francisco') this.getTime(0);
     if (city === 'moscow') this.getTime(11);
@@ -260,23 +260,18 @@ class App extends React.Component {
       style.backgroundPosition = `15% ${this.state.sunOrMoonPosition}, top`;
 
       if (state.time >= 7 && state.time <= 9) style.backgroundImage = `url("../img/sun-1.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time >= 10 && state.time <= 12) style.backgroundImage = `url("../img/sun-2.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time >= 13 && state.time <= 15) style.backgroundImage = `url("../img/sun-3.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+      if (state.time >= 10 && state.time <= 12) style.backgroundImage = `url("../img/sun-1.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+      if (state.time >= 13 && state.time <= 15) style.backgroundImage = `url("../img/sun-2.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
       if (state.time >= 16 && state.time <= 18) style.backgroundImage = `url("../img/sun-4.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
 
     } else {
       style.backgroundPosition = `85% ${this.state.sunOrMoonPosition}, top`;
-
-      if (state.time >= 19 && state.time <= 21) style.backgroundImage = `url("../img/moon-4.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time >= 22 && state.time <= 24) style.backgroundImage = `url("../img/moon-3.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time >= 1 && state.time <= 3) style.backgroundImage = `url("../img/moon-2.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time >= 4 && state.time <= 6) style.backgroundImage = `url("../img/moon-1.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
-      if (state.time < 1 || state.time > 24) style.backgroundImage = `url("../img/moon-1.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
+      style.backgroundImage = `url("../img/moon-1.svg"), linear-gradient(180deg,${this.state.gradient1} 0%, ${this.state.gradient2} 50%, ${this.state.gradient2} 100%)`;
     }
 
     return (
       <div style={style}>
-        <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/${this.state.selectedCity}.png') bottom center no-repeat`}}>
+        <div className="row no-gutters justify-content-center align-items-center" style={{background: `linear-gradient(0deg, ${this.state.mountain2}, ${this.state.mountain1}), url('../img/3.png') center center no-repeat`}}>
           <div className="col-11 col-sm-8 col-md-7 col-lg-6">
             <header>{this.returnCities()}</header>
 

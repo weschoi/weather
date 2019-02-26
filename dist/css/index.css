@@ -65,13 +65,13 @@ html, body {
           justify-content: center;
           align-items: center;
           width: 100%;
-          height: 70%; }
+          height: 73%; }
           .container-fluid > div .row > div > section > :first-child {
             font-size: 150px;
             font-weight: 100; }
           .container-fluid > div .row > div > section > :nth-child(2) {
             font-size: 17px;
-            margin-bottom: 75px; }
+            margin-bottom: 65px; }
         .container-fluid > div .row > div footer {
           display: -webkit-flex;
           display: flex;
@@ -79,7 +79,7 @@ html, body {
           justify-content: center;
           align-items: center;
           width: 100%;
-          height: 25%; }
+          height: 22%; }
           .container-fluid > div .row > div footer span {
             width: 65%;
             height: 20%;
