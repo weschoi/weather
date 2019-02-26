@@ -10,6 +10,6 @@
   </filter>
 
 
-  <circle cx="150" cy="150" r="130" fill="#FEDAD7"
+  <circle cx="150" cy="150" r="130" fill="#FD9087"
           filter="url(#blurMe)" />
 </svg>

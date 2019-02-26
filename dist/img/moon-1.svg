@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="68px" height="73px" viewBox="0 0 68 73" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <filter x="-10.1%" y="-9.4%" width="120.3%" height="118.9%" filterUnits="objectBoundingBox" id="filter-1">
+            <feGaussianBlur stdDeviation="2" in="SourceGraphic"></feGaussianBlur>
+        </filter>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M3.8902172,52.8336478 C7.78386492,56.4190512 12.9827235,58.6086538 18.6929911,58.6086538 C30.7651922,58.6086538 40.5516449,48.8222011 40.5516449,36.75 C40.5516449,24.6777989 30.7651922,14.8913462 18.6929911,14.8913462 C12.9827235,14.8913462 7.78386492,17.0809487 3.8902172,20.6663522 C9.40902545,11.2914348 19.6052289,5 31.2708757,5 C48.8059164,5 63.0208757,19.2149592 63.0208757,36.75 C63.0208757,54.2850407 48.8059164,68.5 31.2708757,68.5 C19.6052289,68.5 9.40902545,62.2085651 3.89022191,52.8336522 L3.8902172,52.8336478 Z" id="Combined-Shape" fill="white" fill-rule="nonzero" filter="url(#filter-1)"></path>
+    </g>
+</svg>
